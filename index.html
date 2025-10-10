@@ -14,7 +14,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Паровой туман */
+/* Пар */
 body::after {
     content: "";
     position: absolute;
@@ -26,8 +26,6 @@ body::after {
     z-index: 0;
     animation: steamMove 20s linear infinite;
 }
-
-/* Анимация движения пара */
 @keyframes steamMove {
     0% { background-position: 0 0; }
     100% { background-position: 1000px 0; }
@@ -84,11 +82,7 @@ header {
     max-height: 80%;
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(255,200,120,0.8);
-    transition: transform 0.5s ease, filter 0.5s ease;
-}
-#modal img.fade {
-    opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.4s ease;
 }
 #modal .close {
     position: absolute;
@@ -105,6 +99,24 @@ header {
     padding: 10px 0;
     font-style: italic;
 }
+#prev, #next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    padding: 16px;
+    margin-top: -50px;
+    color: #ffcc80;
+    font-weight: bold;
+    font-size: 40px;
+    user-select: none;
+    text-shadow: 2px 2px 6px #000;
+    transition: color 0.3s;
+}
+#prev:hover, #next:hover {
+    color: #fff;
+}
+#prev { left: 40px; }
+#next { right: 40px; }
 
 /* Анимация модального окна */
 @keyframes fadeIn {
@@ -148,7 +160,9 @@ header {
 
 <div id="modal">
     <span class="close">&times;</span>
+    <span id="prev">&#10094;</span>
     <img id="modal-img">
+    <span id="next">&#10095;</span>
     <div id="caption"></div>
 </div>
 
@@ -158,21 +172,41 @@ const modalImg = document.getElementById("modal-img");
 const captionText = document.getElementById("caption");
 const images = document.querySelectorAll(".gallery img");
 const closeBtn = document.querySelector("#modal .close");
+const prevBtn = document.getElementById("prev");
+const nextBtn = document.getElementById("next");
 
-images.forEach(img => {
+let currentIndex = 0;
+
+function showImage(index) {
+    if (index < 0) index = images.length - 1;
+    if (index >= images.length) index = 0;
+    currentIndex = index;
+    modalImg.style.opacity = 0;
+    setTimeout(() => {
+        modalImg.src = images[index].src;
+        captionText.innerHTML = images[index].alt;
+        modalImg.style.opacity = 1;
+    }, 200);
+}
+
+images.forEach((img, i) => {
     img.onclick = () => {
         modal.style.display = "block";
-        modalImg.classList.add('fade');
-        setTimeout(() => {
-            modalImg.src = img.src;
-            captionText.innerHTML = img.alt;
-            modalImg.classList.remove('fade');
-        }, 200);
-    }
+        showImage(i);
+    };
 });
 
+prevBtn.onclick = () => showImage(currentIndex - 1);
+nextBtn.onclick = () => showImage(currentIndex + 1);
 closeBtn.onclick = () => modal.style.display = "none";
 window.onclick = e => { if(e.target === modal) modal.style.display = "none"; }
+window.onkeydown = e => {
+    if (modal.style.display === "block") {
+        if (e.key === "ArrowRight") showImage(currentIndex + 1);
+        if (e.key === "ArrowLeft") showImage(currentIndex - 1);
+        if (e.key === "Escape") modal.style.display = "none";
+    }
+};
 </script>
 
 </body>
