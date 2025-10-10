@@ -12,24 +12,6 @@ body {
     color: #f2e3c6;
     overflow-x: hidden;
 }
-
-/* Эффект пара */
-body::after {
-    content: "";
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: url('https://i.ibb.co/3hXq3Qp/steam.png') repeat;
-    opacity: 0.07;
-    animation: steamMove 30s linear infinite;
-    pointer-events: none;
-    z-index: 1;
-}
-@keyframes steamMove {
-    from { background-position: 0 0; }
-    to { background-position: 1000px 0; }
-}
-
 header {
     text-align: center;
     padding: 35px 20px;
@@ -40,55 +22,19 @@ header {
     letter-spacing: 1px;
     border-bottom: 2px solid rgba(255, 200, 100, 0.3);
     backdrop-filter: blur(4px);
-    position: relative;
-    z-index: 2;
 }
-
-/* Кнопка звука */
-#sound-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: rgba(70, 50, 30, 0.8);
-    color: #ffdd99;
-    border: 2px solid rgba(255, 220, 150, 0.4);
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    cursor: pointer;
-    font-size: 26px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 15px rgba(255,200,120,0.4);
-    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
-    z-index: 9999;
-}
-#sound-btn:hover {
-    transform: scale(1.1);
-    background: rgba(90, 60, 40, 0.9);
-    box-shadow: 0 0 25px rgba(255,180,80,0.7);
-}
-#sound-btn.active {
-    background: rgba(120, 80, 40, 0.9);
-    box-shadow: 0 0 30px rgba(255,220,150,0.9);
-}
-
 .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 25px;
     padding: 30px;
-    position: relative;
-    z-index: 2;
 }
-
 .gallery img {
     width: 100%;
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.7);
     cursor: pointer;
-    transition: transform 0.5s ease, filter 0.5s ease, box-shadow 0.5s ease;
+    transition: transform 0.5s ease, filter 0.5s ease, opacity 0.5s ease;
     filter: sepia(0.2) brightness(0.9);
 }
 .gallery img:hover {
@@ -96,12 +42,10 @@ header {
     filter: sepia(0.4) brightness(1.05);
     box-shadow: 0 10px 30px rgba(255, 180, 70, 0.6);
 }
-
-/* Модальное окно */
 #modal {
     display: none;
     position: fixed;
-    z-index: 10000;
+    z-index: 1000;
     left: 0; top: 0;
     width: 100%; height: 100%;
     background-color: rgba(10, 5, 0, 0.95);
@@ -114,7 +58,7 @@ header {
     max-height: 80%;
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(255,200,120,0.8);
-    transition: opacity 0.4s ease;
+    transition: opacity 0.5s ease;
 }
 #modal .close {
     position: absolute;
@@ -138,26 +82,17 @@ header {
     color: #ffcc80;
     font-size: 40px;
     user-select: none;
-    text-shadow: 2px 2px 6px #000;
     transition: color 0.3s;
 }
 #prev:hover, #next:hover { color: #fff; }
 #prev { left: 40px; }
 #next { right: 40px; }
-
-@keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
-
-/* Мягкое мерцание света */
+@keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
 @keyframes glow {
     0%, 100% { box-shadow: 0 0 20px rgba(255,210,130,0.4); }
     50% { box-shadow: 0 0 40px rgba(255,220,150,0.8); }
 }
-.gallery img:hover {
-    animation: glow 2s infinite alternate;
-}
+.gallery img:hover { animation: glow 2s infinite alternate; }
 </style>
 </head>
 <body>
@@ -166,14 +101,31 @@ header {
 
 <main>
 <div class="gallery">
-    <img src="photo1.jpg" alt="Фото 1">
-    <img src="photo2.jpg" alt="Фото 2">
-    <img src="photo3.jpg" alt="Фото 3">
-    <img src="photo4.jpg" alt="Фото 4">
+    <img src="generated-content - 2025-10-11T003637.458.jpg" alt="Фото 1">
+    <img src="generated-content - 2025-10-11T003749.196.jpg" alt="Фото 2">
+    <img src="generated-content - 2025-10-11T003905.441.jpg" alt="Фото 3">
+    <img src="generated-content - 2025-10-11T004105.514.jpg" alt="Фото 4">
+    <img src="generated-content - 2025-10-11T004456.688.jpg" alt="Фото 5">
+    <img src="generated-content - 2025-10-11T004552.444.jpg" alt="Фото 6">
+    <img src="загружено - 2025-10-11T005655.524.png" alt="Фото 7">
+    <img src="загружено - 2025-10-11T010356.391.png" alt="Фото 8">
+    <img src="загружено - 2025-10-11T010704.927.png" alt="Фото 9">
+    <img src="загружено - 2025-10-11T010850.567.png" alt="Фото 10">
+    <img src="загружено - 2025-10-11T010944.309.png" alt="Фото 11">
+    <img src="загружено - 2025-10-11T011015.407.png" alt="Фото 12">
+    <img src="загружено - 2025-10-11T011059.021.png" alt="Фото 13">
+    <img src="загружено - 2025-10-11T011141.257.png" alt="Фото 14">
+    <img src="загружено - 2025-10-11T011239.525.png" alt="Фото 15">
+    <img src="загружено - 2025-10-11T011317.636.png" alt="Фото 16">
+    <img src="загружено - 2025-10-11T011437.293.png" alt="Фото 17">
+    <img src="загружено - 2025-10-11T011523.471.png" alt="Фото 18">
+    <img src="загружено - 2025-10-11T011603.254.png" alt="Фото 19">
+    <img src="загружено - 2025-10-11T011629.454.png" alt="Фото 20">
+    <img src="загружено - 2025-10-11T011921.928.png" alt="Фото 21">
+    <img src="загружено - 2025-10-11T012130.208.png" alt="Фото 22">
 </div>
 </main>
 
-<!-- Модальное окно -->
 <div id="modal">
     <span class="close">&times;</span>
     <span id="prev">&#10094;</span>
@@ -182,13 +134,8 @@ header {
     <div id="caption"></div>
 </div>
 
-<!-- Кнопка звука -->
-<button id="sound-btn" title="Включить/выключить звук 🔊">🔇</button>
-<audio id="bath-sound" loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7e3a27e2e8.mp3?filename=relaxing-steam-water-10649.mp3" type="audio/mpeg">
-</audio>
-
 <script>
+// Галерея с модальным окном и плавными переходами
 const modal = document.getElementById("modal");
 const modalImg = document.getElementById("modal-img");
 const captionText = document.getElementById("caption");
@@ -207,14 +154,16 @@ function showImage(index) {
         modalImg.src = images[index].src;
         captionText.innerHTML = images[index].alt;
         modalImg.style.opacity = 1;
-    }, 150);
+    }, 200);
 }
+
 images.forEach((img, i) => {
     img.onclick = () => {
         modal.style.display = "block";
         showImage(i);
     };
 });
+
 prevBtn.onclick = () => showImage(currentIndex - 1);
 nextBtn.onclick = () => showImage(currentIndex + 1);
 closeBtn.onclick = () => modal.style.display = "none";
@@ -227,23 +176,32 @@ window.onkeydown = e => {
     }
 };
 
-// Управление звуком
-const soundBtn = document.getElementById('sound-btn');
-const audio = document.getElementById('bath-sound');
-let isPlaying = false;
+// Ритмичный восточный мотив через Web Audio API
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+const gainNode = audioCtx.createGain();
+gainNode.gain.value = 0.1;
+gainNode.connect(audioCtx.destination);
 
-soundBtn.addEventListener('click', () => {
-    if (!isPlaying) {
-        audio.play();
-        soundBtn.classList.add('active');
-        soundBtn.textContent = '🔊';
-    } else {
-        audio.pause();
-        soundBtn.classList.remove('active');
-        soundBtn.textContent = '🔇';
-    }
-    isPlaying = !isPlaying;
-});
+function playTone(time, freq, duration) {
+    const osc = audioCtx.createOscillator();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+    osc.connect(gainNode);
+    osc.start(time);
+    osc.stop(time + duration);
+}
+
+function playLoop() {
+    const now = audioCtx.currentTime;
+    const pattern = [220, 330, 440, 330];
+    pattern.forEach((f, i) => playTone(now + i*0.4, f, 0.35));
+    setTimeout(playLoop, 1600);
+}
+
+document.body.addEventListener('click', () => {
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    playLoop();
+}, {once:true});
 </script>
 </body>
 </html>
