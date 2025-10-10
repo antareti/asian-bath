@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Азиатская баня 1942 — Фотогалерея</title>
+<style>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: linear-gradient(to bottom, #3e2723, #5d4037);
+    color: #fff;
+}
+header {
+    text-align: center;
+    padding: 30px 20px;
+    background-color: rgba(0,0,0,0.4);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+    font-size: 1.8em;
+    letter-spacing: 1px;
+}
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    padding: 20px;
+}
+.gallery img {
+    width: 100%;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+}
+
+/* Модальное окно */
+#modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 60px;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    animation: fadeIn 0.3s;
+}
+#modal img {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.8);
+}
+#modal .close {
+    position: absolute;
+    top: 30px; right: 45px;
+    color: #ffcc80;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    text-shadow: 1px 1px 5px #000;
+}
+#caption {
+    text-align: center;
+    color: #ffe0b2;
+    padding: 10px 0;
+    font-style: italic;
+}
+
+/* Анимация модального окна */
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+</style>
+</head>
+<body>
+
+<header>
+Азиатская баня 1942 — Фотогалерея
+</header>
+
+<main>
+<div class="gallery">
+    <img src="images/photo1.jpg" alt="Фото 1">
+    <img src="images/photo2.jpg" alt="Фото 2">
+    <img src="images/photo3.jpg" alt="Фото 3">
+    <!-- Добавляй сюда остальные фото -->
+</div>
+</main>
+
+<div id="modal">
+    <span class="close">&times;</span>
+    <img id="modal-img">
+    <div id="caption"></div>
+</div>
+
+<script>
+const modal = document.getElementById("modal");
+const modalImg = document.getElementById("modal-img");
+const captionText = document.getElementById("caption");
+const images = document.querySelectorAll(".gallery img");
+const closeBtn = document.querySelector("#modal .close");
+
+images.forEach(img => {
+    img.onclick = () => {
+        modal.style.display = "block";
+        modalImg.src = img.src;
+        captionText.innerHTML = img.alt;
+    }
+});
+
+closeBtn.onclick = () => modal.style.display = "none";
+window.onclick = e => { if(e.target === modal) modal.style.display = "none"; }
+</script>
+
+</body>
+</html>
