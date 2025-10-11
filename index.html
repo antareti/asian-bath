@@ -8,19 +8,35 @@
 body {
     margin: 0;
     font-family: 'Georgia', serif;
-    background: radial-gradient(circle at bottom, #3b2a24, #1c0f0a);
     color: #f2e3c6;
     overflow-x: hidden;
+    background: 
+        linear-gradient(to bottom, rgba(235,225,200,0.3), rgba(60,40,25,0.8)),
+        repeating-linear-gradient(-45deg, rgba(120,100,80,0.2) 0 2px, transparent 2px 8px),
+        radial-gradient(circle at 30% 20%, rgba(200,180,150,0.3), transparent 60%),
+        radial-gradient(circle at 70% 40%, rgba(220,200,170,0.2), transparent 60%);
+    background-blend-mode: overlay, overlay, lighten, lighten;
 }
 header {
+    position: relative;
     text-align: center;
     padding: 35px 20px;
-    background: rgba(60, 40, 25, 0.8);
     color: #ffdd99;
-    text-shadow: 0 0 15px rgba(255, 204, 102, 0.7);
     font-size: 2em;
+    text-shadow: 0 0 15px rgba(255, 204, 102, 0.7);
     border-bottom: 2px solid rgba(255, 200, 100, 0.3);
     backdrop-filter: blur(4px);
+}
+header::before {
+    content: "";
+    position: absolute;
+    left:0; top:0;
+    width: 100%; height: 100%;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(180,160,130,0.2), transparent 50%),
+        radial-gradient(circle at 80% 60%, rgba(200,180,150,0.15), transparent 50%);
+    z-index: -1;
+    pointer-events: none;
 }
 section {
     max-width: 900px;
@@ -136,7 +152,6 @@ h2 {
 #prev:hover, #next:hover { color: #fff; }
 #prev { left: 40px; }
 #next { right: 40px; }
-@keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
 footer {
     text-align: center;
     padding: 20px;
