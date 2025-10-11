@@ -184,23 +184,38 @@ audio, video {
 
 <section>
 <h2>Исторический контекст</h2>
-<p>Эта серия фотографий была сделана летом 1942 года в одной из азиатских бань на окраине Ташкента. В годы Великой Отечественной войны город стал прибежищем для эвакуированных женщин и детей. Баня служила не только местом гигиены, но и точкой человеческого тепла: здесь делились новостями, читали фронтовые письма и просто молчали вместе. Эти кадры — редкое свидетельство того, как люди сохраняли достоинство и быт в трудные времена.</p>
+<p>Среднеазиатская баня времён Второй мировой (1942), место отдыха и омовения для рабочих, военных и жителей тыловых городов. Эти фотографии показывают атмосферу того времени — людей, которые сохраняли быт и тепло в трудные годы.</p>
 </section>
 
 <main>
 <div class="gallery">
-    <img src="generated-content - 2025-10-11T003637.458.jpg" alt="Женщины у входа в баню, Ташкент, 1942 год">
-    <img src="generated-content - 2025-10-11T003749.196.jpg" alt="Комната отдыха с тазиками и чайником">
-    <img src="generated-content - 2025-10-11T003905.441.jpg" alt="Банщицы готовят воду у печи">
-    <img src="generated-content - 2025-10-11T004105.514.jpg" alt="Внутренний двор, самодельный душ">
-    <img src="generated-content - 2025-10-11T004456.688.jpg" alt="Посетительницы в ожидании, Ташкент">
-    <img src="generated-content - 2025-10-11T004552.444.jpg" alt="Работница растапливает печь, 1942 год">
+    <img src="generated-content - 2025-10-11T003553.524.jpg" alt="Фото 1">
+    <img src="generated-content - 2025-10-11T003637.458.jpg" alt="Фото 2">
+    <img src="generated-content - 2025-10-11T003749.196.jpg" alt="Фото 3">
+    <img src="generated-content - 2025-10-11T003905.441.jpg" alt="Фото 4">
+    <img src="generated-content - 2025-10-11T004105.514.jpg" alt="Фото 5">
+    <img src="generated-content - 2025-10-11T004456.688.jpg" alt="Фото 6">
+    <img src="generated-content - 2025-10-11T004552.444.jpg" alt="Фото 7">
+    <img src="загружено - 2025-10-11T005655.524.png" alt="Фото 8">
+    <img src="загружено - 2025-10-11T010356.391.png" alt="Фото 9">
+    <img src="загружено - 2025-10-11T010704.927.png" alt="Фото 10">
+    <img src="загружено - 2025-10-11T010850.567.png" alt="Фото 11">
+    <img src="загружено - 2025-10-11T010944.309.png" alt="Фото 12">
+    <img src="загружено - 2025-10-11T011015.407.png" alt="Фото 13">
+    <img src="загружено - 2025-10-11T011059.021.png" alt="Фото 14">
+    <img src="загружено - 2025-10-11T011141.257.png" alt="Фото 15">
+    <img src="загружено - 2025-10-11T011239.525.png" alt="Фото 16">
+    <img src="загружено - 2025-10-11T011317.636.png" alt="Фото 17">
+    <img src="загружено - 2025-10-11T011437.293.png" alt="Фото 18">
+    <img src="загружено - 2025-10-11T011523.471.png" alt="Фото 19">
+    <img src="загружено - 2025-10-11T011603.254.png" alt="Фото 20">
+    <img src="загружено - 2025-10-11T011629.454.png" alt="Фото 21">
+    <img src="загружено - 2025-10-11T011921.928.png" alt="Фото 22">
+    <img src="загружено - 2025-10-11T012130.2" alt="Фото 23">
 </div>
 </main>
 
-<div class="thumbnail-bar" id="thumbnailBar">
-  <!-- миниатюры будут сгенерированы скриптом -->
-</div>
+<div class="thumbnail-bar" id="thumbnailBar"></div>
 
 <div id="modal">
     <span class="close">&times;</span>
@@ -212,14 +227,14 @@ audio, video {
 
 <section>
 <h2>Карта и схема</h2>
-<p>Место съёмки — Ташкент, район старых общественных бань у канала Анхор.</p>
+<p>Место съёмки — Средняя Азия, баня 1942 года.</p>
 <iframe class="map" src="https://www.openstreetmap.org/export/embed.html?bbox=69.250%2C41.300%2C69.270%2C41.320&layer=mapnik"></iframe>
 </section>
 
 <section>
 <h2>Рассказ очевидца</h2>
 <p><em>«Каждую субботу мы ходили в эту баню. Там пахло мылом, паром и сушёными травами. Местные женщины угощали нас чаем, рассказывали новости с фронта. Эти часы тепла помогали не сойти с ума от тревоги».</em></p>
-<p style="text-align:right;">— Из воспоминаний З. И. Громовой, Ташкент</p>
+<p style="text-align:right;">— Из воспоминаний З. И. Громовой</p>
 </section>
 
 <section>
@@ -268,7 +283,6 @@ images.forEach((img, i) => {
   thumb.onclick = () => showImage(i);
   thumbnailBar.appendChild(thumb);
 });
-
 const thumbs = document.querySelectorAll(".thumbnail-bar img");
 
 function showImage(index) {
@@ -294,7 +308,7 @@ window.onkeydown = e => {
   }
 };
 
-// Автоматическая плавная прокрутка ленты миниатюр
+// Автоматическая прокрутка ленты
 function autoScroll() {
   thumbnailBar.scrollLeft += 0.5;
   if (thumbnailBar.scrollLeft + thumbnailBar.clientWidth >= thumbnailBar.scrollWidth) {
@@ -304,7 +318,7 @@ function autoScroll() {
 }
 autoScroll();
 
-// Фоновый ритмичный мотив
+// Фоновый мотив
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 const gainNode = audioCtx.createGain();
 gainNode.gain.value = 0.04;
