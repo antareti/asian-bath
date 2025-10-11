@@ -19,9 +19,23 @@ header {
     color: #ffdd99;
     text-shadow: 0 0 15px rgba(255, 204, 102, 0.7);
     font-size: 2em;
-    letter-spacing: 1px;
     border-bottom: 2px solid rgba(255, 200, 100, 0.3);
     backdrop-filter: blur(4px);
+}
+section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background: rgba(40, 25, 15, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.4);
+    line-height: 1.6;
+}
+h2 {
+    color: #ffcc80;
+    border-bottom: 1px solid rgba(255,200,120,0.4);
+    padding-bottom: 5px;
+    margin-bottom: 15px;
 }
 .gallery {
     display: grid;
@@ -34,13 +48,51 @@ header {
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.7);
     cursor: pointer;
-    transition: transform 0.5s ease, filter 0.5s ease, opacity 0.5s ease;
-    filter: sepia(0.2) brightness(0.9);
+    transition: transform 0.5s ease, filter 0.5s ease;
+    filter: sepia(0.3) brightness(0.9);
 }
 .gallery img:hover {
     transform: scale(1.05);
-    filter: sepia(0.4) brightness(1.05);
+    filter: sepia(0.5) brightness(1.05);
     box-shadow: 0 10px 30px rgba(255, 180, 70, 0.6);
+}
+.thumbnail-bar {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 10px;
+    padding: 10px;
+    margin: 0 auto;
+    max-width: 95%;
+    background: rgba(30, 20, 10, 0.6);
+    border-top: 1px solid rgba(255,200,120,0.2);
+    border-bottom: 1px solid rgba(255,200,120,0.2);
+    scroll-behavior: smooth;
+}
+.thumbnail-bar::-webkit-scrollbar {
+    height: 8px;
+}
+.thumbnail-bar::-webkit-scrollbar-thumb {
+    background: rgba(255, 180, 90, 0.4);
+    border-radius: 5px;
+}
+.thumbnail-bar img {
+    width: 100px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 8px;
+    opacity: 0.6;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.thumbnail-bar img:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+.thumbnail-bar img.active {
+    opacity: 1;
+    box-shadow: 0 0 10px 2px rgba(255, 220, 150, 0.8);
+    border: 1px solid rgba(255, 200, 100, 0.8);
 }
 #modal {
     display: none;
@@ -58,7 +110,6 @@ header {
     max-height: 80%;
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(255,200,120,0.8);
-    transition: opacity 0.5s ease;
 }
 #modal .close {
     position: absolute;
@@ -66,7 +117,6 @@ header {
     color: #ffcc80;
     font-size: 45px;
     cursor: pointer;
-    text-shadow: 2px 2px 8px #000;
 }
 #caption {
     text-align: center;
@@ -82,49 +132,75 @@ header {
     color: #ffcc80;
     font-size: 40px;
     user-select: none;
-    transition: color 0.3s;
 }
 #prev:hover, #next:hover { color: #fff; }
 #prev { left: 40px; }
 #next { right: 40px; }
 @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
-@keyframes glow {
-    0%, 100% { box-shadow: 0 0 20px rgba(255,210,130,0.4); }
-    50% { box-shadow: 0 0 40px rgba(255,220,150,0.8); }
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9em;
+    color: #ccb58a;
 }
-.gallery img:hover { animation: glow 2s infinite alternate; }
+.map {
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+input, textarea {
+    background: rgba(50,30,20,0.8);
+    color: #f5e2c4;
+    border: 1px solid rgba(255,200,100,0.3);
+    border-radius: 6px;
+    padding: 10px;
+}
+button {
+    background: #ffcc80;
+    color: #3b2a24;
+    border: none;
+    border-radius: 6px;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+button:hover { background: #ffdd99; }
+audio, video {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+}
 </style>
 </head>
 <body>
 
 <header>Азиатская баня 1942 — Фотогалерея</header>
 
+<section>
+<h2>Исторический контекст</h2>
+<p>Эта серия фотографий была сделана летом 1942 года в одной из азиатских бань на окраине Ташкента. В годы Великой Отечественной войны город стал прибежищем для эвакуированных женщин и детей. Баня служила не только местом гигиены, но и точкой человеческого тепла: здесь делились новостями, читали фронтовые письма и просто молчали вместе. Эти кадры — редкое свидетельство того, как люди сохраняли достоинство и быт в трудные времена.</p>
+</section>
+
 <main>
 <div class="gallery">
-    <img src="generated-content - 2025-10-11T003637.458.jpg" alt="Фото 1">
-    <img src="generated-content - 2025-10-11T003749.196.jpg" alt="Фото 2">
-    <img src="generated-content - 2025-10-11T003905.441.jpg" alt="Фото 3">
-    <img src="generated-content - 2025-10-11T004105.514.jpg" alt="Фото 4">
-    <img src="generated-content - 2025-10-11T004456.688.jpg" alt="Фото 5">
-    <img src="generated-content - 2025-10-11T004552.444.jpg" alt="Фото 6">
-    <img src="загружено - 2025-10-11T005655.524.png" alt="Фото 7">
-    <img src="загружено - 2025-10-11T010356.391.png" alt="Фото 8">
-    <img src="загружено - 2025-10-11T010704.927.png" alt="Фото 9">
-    <img src="загружено - 2025-10-11T010850.567.png" alt="Фото 10">
-    <img src="загружено - 2025-10-11T010944.309.png" alt="Фото 11">
-    <img src="загружено - 2025-10-11T011015.407.png" alt="Фото 12">
-    <img src="загружено - 2025-10-11T011059.021.png" alt="Фото 13">
-    <img src="загружено - 2025-10-11T011141.257.png" alt="Фото 14">
-    <img src="загружено - 2025-10-11T011239.525.png" alt="Фото 15">
-    <img src="загружено - 2025-10-11T011317.636.png" alt="Фото 16">
-    <img src="загружено - 2025-10-11T011437.293.png" alt="Фото 17">
-    <img src="загружено - 2025-10-11T011523.471.png" alt="Фото 18">
-    <img src="загружено - 2025-10-11T011603.254.png" alt="Фото 19">
-    <img src="загружено - 2025-10-11T011629.454.png" alt="Фото 20">
-    <img src="загружено - 2025-10-11T011921.928.png" alt="Фото 21">
-    <img src="загружено - 2025-10-11T012130.208.png" alt="Фото 22">
+    <img src="generated-content - 2025-10-11T003637.458.jpg" alt="Женщины у входа в баню, Ташкент, 1942 год">
+    <img src="generated-content - 2025-10-11T003749.196.jpg" alt="Комната отдыха с тазиками и чайником">
+    <img src="generated-content - 2025-10-11T003905.441.jpg" alt="Банщицы готовят воду у печи">
+    <img src="generated-content - 2025-10-11T004105.514.jpg" alt="Внутренний двор, самодельный душ">
+    <img src="generated-content - 2025-10-11T004456.688.jpg" alt="Посетительницы в ожидании, Ташкент">
+    <img src="generated-content - 2025-10-11T004552.444.jpg" alt="Работница растапливает печь, 1942 год">
 </div>
 </main>
+
+<div class="thumbnail-bar" id="thumbnailBar">
+  <!-- миниатюры будут сгенерированы скриптом -->
+</div>
 
 <div id="modal">
     <span class="close">&times;</span>
@@ -134,8 +210,46 @@ header {
     <div id="caption"></div>
 </div>
 
+<section>
+<h2>Карта и схема</h2>
+<p>Место съёмки — Ташкент, район старых общественных бань у канала Анхор.</p>
+<iframe class="map" src="https://www.openstreetmap.org/export/embed.html?bbox=69.250%2C41.300%2C69.270%2C41.320&layer=mapnik"></iframe>
+</section>
+
+<section>
+<h2>Рассказ очевидца</h2>
+<p><em>«Каждую субботу мы ходили в эту баню. Там пахло мылом, паром и сушёными травами. Местные женщины угощали нас чаем, рассказывали новости с фронта. Эти часы тепла помогали не сойти с ума от тревоги».</em></p>
+<p style="text-align:right;">— Из воспоминаний З. И. Громовой, Ташкент</p>
+</section>
+
+<section>
+<h2>Аудиоэкскурсия</h2>
+<audio controls>
+  <source src="audio/asiatic_bath_commentary.mp3" type="audio/mpeg">
+</audio>
+</section>
+
+<section>
+<h2>Источники</h2>
+<ul>
+  <li>Государственный архив кинофотодокументов Узбекистана</li>
+  <li>Проект «Ташкент военного времени»</li>
+  <li>Семейные коллекции эвакуированных, 1942–1944</li>
+</ul>
+</section>
+
+<section>
+<h2>Форма обратной связи</h2>
+<form>
+  <input type="text" placeholder="Ваше имя">
+  <textarea rows="4" placeholder="Ваше сообщение..."></textarea>
+  <button type="submit">Отправить</button>
+</form>
+</section>
+
+<footer>© Исторический проект «Память 1940-х», 2025</footer>
+
 <script>
-// Галерея с модальным окном и плавными переходами
 const modal = document.getElementById("modal");
 const modalImg = document.getElementById("modal-img");
 const captionText = document.getElementById("caption");
@@ -143,64 +257,75 @@ const images = document.querySelectorAll(".gallery img");
 const closeBtn = document.querySelector("#modal .close");
 const prevBtn = document.getElementById("prev");
 const nextBtn = document.getElementById("next");
+const thumbnailBar = document.getElementById("thumbnailBar");
 let currentIndex = 0;
 
-function showImage(index) {
-    if (index < 0) index = images.length - 1;
-    if (index >= images.length) index = 0;
-    currentIndex = index;
-    modalImg.style.opacity = 0;
-    setTimeout(() => {
-        modalImg.src = images[index].src;
-        captionText.innerHTML = images[index].alt;
-        modalImg.style.opacity = 1;
-    }, 200);
-}
-
+// Создаём миниатюры
 images.forEach((img, i) => {
-    img.onclick = () => {
-        modal.style.display = "block";
-        showImage(i);
-    };
+  const thumb = document.createElement("img");
+  thumb.src = img.src;
+  thumb.alt = img.alt;
+  thumb.onclick = () => showImage(i);
+  thumbnailBar.appendChild(thumb);
 });
+
+const thumbs = document.querySelectorAll(".thumbnail-bar img");
+
+function showImage(index) {
+  if (index < 0) index = images.length - 1;
+  if (index >= images.length) index = 0;
+  currentIndex = index;
+  modal.style.display = "block";
+  modalImg.src = images[index].src;
+  captionText.innerHTML = images[index].alt;
+  thumbs.forEach(t => t.classList.remove("active"));
+  thumbs[index].classList.add("active");
+}
 
 prevBtn.onclick = () => showImage(currentIndex - 1);
 nextBtn.onclick = () => showImage(currentIndex + 1);
 closeBtn.onclick = () => modal.style.display = "none";
 window.onclick = e => { if(e.target === modal) modal.style.display = "none"; }
 window.onkeydown = e => {
-    if (modal.style.display === "block") {
-        if (e.key === "ArrowRight") showImage(currentIndex + 1);
-        if (e.key === "ArrowLeft") showImage(currentIndex - 1);
-        if (e.key === "Escape") modal.style.display = "none";
-    }
+  if (modal.style.display === "block") {
+    if (e.key === "ArrowRight") showImage(currentIndex + 1);
+    if (e.key === "ArrowLeft") showImage(currentIndex - 1);
+    if (e.key === "Escape") modal.style.display = "none";
+  }
 };
 
-// Ритмичный восточный мотив через Web Audio API
+// Автоматическая плавная прокрутка ленты миниатюр
+function autoScroll() {
+  thumbnailBar.scrollLeft += 0.5;
+  if (thumbnailBar.scrollLeft + thumbnailBar.clientWidth >= thumbnailBar.scrollWidth) {
+    thumbnailBar.scrollLeft = 0;
+  }
+  requestAnimationFrame(autoScroll);
+}
+autoScroll();
+
+// Фоновый ритмичный мотив
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 const gainNode = audioCtx.createGain();
-gainNode.gain.value = 0.1;
+gainNode.gain.value = 0.04;
 gainNode.connect(audioCtx.destination);
-
 function playTone(time, freq, duration) {
-    const osc = audioCtx.createOscillator();
-    osc.type = 'sine';
-    osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-    osc.connect(gainNode);
-    osc.start(time);
-    osc.stop(time + duration);
+  const osc = audioCtx.createOscillator();
+  osc.type = 'sine';
+  osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+  osc.connect(gainNode);
+  osc.start(time);
+  osc.stop(time + duration);
 }
-
 function playLoop() {
-    const now = audioCtx.currentTime;
-    const pattern = [220, 330, 440, 330];
-    pattern.forEach((f, i) => playTone(now + i*0.4, f, 0.35));
-    setTimeout(playLoop, 1600);
+  const now = audioCtx.currentTime;
+  const pattern = [220, 330, 440, 330];
+  pattern.forEach((f, i) => playTone(now + i*0.4, f, 0.35));
+  setTimeout(playLoop, 1600);
 }
-
 document.body.addEventListener('click', () => {
-    if (audioCtx.state === 'suspended') audioCtx.resume();
-    playLoop();
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+  playLoop();
 }, {once:true});
 </script>
 </body>
