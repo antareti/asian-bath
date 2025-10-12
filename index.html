@@ -3,119 +3,91 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Азиатская баня 1942 — Фотогалерея</title>
+<title>Азиатская баня 1942 — Галерея</title>
 <style>
-/* === Фон старого Ташкента === */
+/* === Общий стиль === */
 body {
-    margin: 0;
-    font-family: 'Georgia', serif;
-    color: #f2e3c6;
-    overflow-x: hidden;
-    background: url('k.png') center center / cover no-repeat fixed;
-    position: relative;
+  margin: 0;
+  font-family: "Georgia", serif;
+  color: #f5e8c7;
+  background: url('k.png') center center / cover no-repeat fixed;
+  overflow: hidden;
+  position: relative;
+  opacity: 0;
+  animation: bodyFadeIn 2s ease-in forwards;
 }
+
+/* Плавное появление страницы */
+@keyframes bodyFadeIn {
+  to { opacity: 1; }
+}
+
+/* Мягкое затемнение поверх фона */
 body::before {
-    content:"";
-    position: absolute;
-    top:0; left:0;
-    width: 100%; height: 100%;
-    background:
-        linear-gradient(to top, rgba(60,40,25,0.8) 0%, transparent 70%) repeat-x,
-        linear-gradient(to top, rgba(80,60,40,0.6) 0%, transparent 60%) repeat-x,
-        radial-gradient(circle at 30% 60%, rgba(200,180,150,0.15), transparent 50%),
-        radial-gradient(circle at 70% 70%, rgba(220,200,170,0.15), transparent 50%);
-    background-size: 60px 200px, 80px 250px, cover, cover;
-    z-index: -1;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(40, 20, 10, 0.6);
+  z-index: -1;
 }
-body::after {
-    content:"";
-    position: absolute;
-    top:0; left:0;
-    width:100%; height:100%;
-    background: radial-gradient(circle at 50% 50%, rgba(255,240,200,0.05), transparent 80%);
-    z-index: -1;
-}
-
-/* === Хедер === */
-header {
-    position: relative;
-    text-align: center;
-    padding: 35px 20px;
-    color: #ffdd99;
-    font-size: 2em;
-    text-shadow: 0 0 15px rgba(255, 204, 102, 0.7);
-    border-bottom: 2px solid rgba(255, 200, 100, 0.3);
-    backdrop-filter: blur(4px);
-}
-
-/* === Исторический блок === */
-section {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 20px;
-    background: rgba(40, 25, 15, 0.7);
-    border-radius: 10px;
-    box-shadow: 0 0 25px rgba(0,0,0,0.4);
-    line-height: 1.6;
-}
-h2 { color: #ffcc80; border-bottom: 1px solid rgba(255,200,120,0.4); padding-bottom: 5px; margin-bottom: 15px; }
 
 /* === Галерея === */
-.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; padding: 30px; }
+.gallery {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
 .gallery img {
-    width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.7);
-    cursor: pointer;
-    transition: transform 0.5s ease, filter 0.5s ease;
-    filter: sepia(0.3) brightness(0.9);
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  animation: fade 88s infinite;
+  transition: opacity 1.5s ease-in-out;
 }
-.gallery img:hover { transform: scale(1.05); filter: sepia(0.5) brightness(1.05); box-shadow: 0 10px 30px rgba(255, 180, 70, 0.6); }
 
-/* === Лента миниатюр === */
-.thumbnail-bar {
-    display: flex; overflow-x: auto; white-space: nowrap; gap: 10px; padding: 10px; margin: 0 auto;
-    max-width: 95%; background: rgba(30,20,10,0.6); border-top:1px solid rgba(255,200,120,0.2); border-bottom:1px solid rgba(255,200,120,0.2);
-    scroll-behavior: smooth;
+/* === Плавные переходы === */
+@keyframes fade {
+  0% { opacity: 0; }
+  5% { opacity: 1; }
+  25% { opacity: 1; }
+  30% { opacity: 0; }
+  100% { opacity: 0; }
 }
-.thumbnail-bar::-webkit-scrollbar { height: 8px; }
-.thumbnail-bar::-webkit-scrollbar-thumb { background: rgba(255, 180, 90, 0.4); border-radius: 5px; }
-.thumbnail-bar img {
-    width: 100px; height: 70px; object-fit: cover; border-radius: 8px; opacity: 0.6; cursor: pointer; transition: all 0.3s ease;
-}
-.thumbnail-bar img:hover { opacity: 1; transform: scale(1.1); }
-.thumbnail-bar img.active { opacity:1; box-shadow:0 0 10px 2px rgba(255,220,150,0.8); border:1px solid rgba(255,200,100,0.8); }
 
-/* === Модальное окно === */
-#modal { display: none; position: fixed; z-index: 1000; left:0; top:0; width:100%; height:100%; background-color: rgba(10,5,0,0.95); }
-#modal img { display:block; margin:auto; max-width:90%; max-height:80%; border-radius:15px; touch-action: pan-y; }
-#modal .close { position:absolute; top:20px; right:45px; color:#ffcc80; font-size:45px; cursor:pointer; }
-#caption { text-align:center; color:#ffe0b2; font-style:italic; padding:15px; }
-#prev, #next { cursor:pointer; position:absolute; top:50%; padding:16px; color:#ffcc80; font-size:40px; user-select:none; transition: color 0.3s; }
-#prev:hover, #next:hover { color:#fff; }
-#prev { left:40px; } #next { right:40px; }
-
-/* === Форма, карта === */
-form { display:flex; flex-direction:column; gap:10px; }
-input, textarea { background: rgba(50,30,20,0.8); color:#f5e2c4; border:1px solid rgba(255,200,100,0.3); border-radius:6px; padding:10px; }
-button { background:#ffcc80; color:#3b2a24; border:none; border-radius:6px; padding:10px; cursor:pointer; font-weight:bold; transition: background 0.3s; }
-button:hover { background:#ffdd99; }
-audio, video { width:100%; border-radius:10px; margin-top:10px; }
-.map { width:100%; height:300px; border-radius:10px; margin-top:15px; }
-footer { text-align:center; padding:20px; font-size:0.9em; color:#ccb58a; }
+/* Каждое изображение появляется по очереди */
+.gallery img:nth-child(1) { animation-delay: 0s; }
+.gallery img:nth-child(2) { animation-delay: 4s; }
+.gallery img:nth-child(3) { animation-delay: 8s; }
+.gallery img:nth-child(4) { animation-delay: 12s; }
+.gallery img:nth-child(5) { animation-delay: 16s; }
+.gallery img:nth-child(6) { animation-delay: 20s; }
+.gallery img:nth-child(7) { animation-delay: 24s; }
+.gallery img:nth-child(8) { animation-delay: 28s; }
+.gallery img:nth-child(9) { animation-delay: 32s; }
+.gallery img:nth-child(10){ animation-delay: 36s; }
+.gallery img:nth-child(11){ animation-delay: 40s; }
+.gallery img:nth-child(12){ animation-delay: 44s; }
+.gallery img:nth-child(13){ animation-delay: 48s; }
+.gallery img:nth-child(14){ animation-delay: 52s; }
+.gallery img:nth-child(15){ animation-delay: 56s; }
+.gallery img:nth-child(16){ animation-delay: 60s; }
+.gallery img:nth-child(17){ animation-delay: 64s; }
+.gallery img:nth-child(18){ animation-delay: 68s; }
+.gallery img:nth-child(19){ animation-delay: 72s; }
+.gallery img:nth-child(20){ animation-delay: 76s; }
+.gallery img:nth-child(21){ animation-delay: 80s; }
+.gallery img:nth-child(22){ animation-delay: 84s; }
 </style>
 </head>
 <body>
 
-<header>Азиатская баня 1942 — Фотогалерея</header>
-
-<section>
-<h2>Исторический контекст</h2>
-<p>Среднеазиатская баня времён Второй мировой (1942), место отдыха и омовения для рабочих, военных и жителей тыловых городов. Эти фотографии показывают атмосферу того времени — людей, которые сохраняли быт и тепло в трудные годы.</p>
-</section>
-
 <main>
-<div class="gallery">
+  <div class="gallery">
     <img src="generated-content - 2025-10-11T003553.524.jpg" alt="Фото 1">
     <img src="generated-content - 2025-10-11T003637.458.jpg" alt="Фото 2">
     <img src="generated-content - 2025-10-11T003749.196.jpg" alt="Фото 3">
@@ -126,140 +98,20 @@ footer { text-align:center; padding:20px; font-size:0.9em; color:#ccb58a; }
     <img src="загружено - 2025-10-11T005655.524.png" alt="Фото 8">
     <img src="загружено - 2025-10-11T010356.391.png" alt="Фото 9">
     <img src="загружено - 2025-10-11T010704.927.png" alt="Фото 10">
-</div>
+    <img src="загружено - 2025-10-11T010850.567.png" alt="Фото 11">
+    <img src="загружено - 2025-10-11T010944.309.png" alt="Фото 12">
+    <img src="загружено - 2025-10-11T011015.407.png" alt="Фото 13">
+    <img src="загружено - 2025-10-11T011059.021.png" alt="Фото 14">
+    <img src="загружено - 2025-10-11T011141.257.png" alt="Фото 15">
+    <img src="загружено - 2025-10-11T011239.525.png" alt="Фото 16">
+    <img src="загружено - 2025-10-11T011317.636.png" alt="Фото 17">
+    <img src="загружено - 2025-10-11T011437.293.png" alt="Фото 18">
+    <img src="загружено - 2025-10-11T011523.471.png" alt="Фото 19">
+    <img src="загружено - 2025-10-11T011603.254.png" alt="Фото 20">
+    <img src="загружено - 2025-10-11T011629.454.png" alt="Фото 21">
+    <img src="загружено - 2025-10-11T011921.928.png" alt="Фото 22">
+  </div>
 </main>
-
-<div class="thumbnail-bar" id="thumbnailBar"></div>
-
-<!-- Модальное окно -->
-<div id="modal" role="dialog" aria-modal="true" aria-label="Просмотр изображения">
-    <span class="close" role="button" aria-label="Закрыть">&#times;</span>
-    <span id="prev" role="button" aria-label="Предыдущее фото">&#10094;</span>
-    <img id="modal-img" alt="">
-    <span id="next" role="button" aria-label="Следующее фото">&#10095;</span>
-    <div id="caption"></div>
-</div>
-
-<section>
-<h2>Карта и схема</h2>
-<p>Место съёмки — Средняя Азия, баня 1942 года.</p>
-<iframe class="map" src="https://www.openstreetmap.org/export/embed.html?bbox=69.250%2C41.300%2C69.270%2C41.320&layer=mapnik"></iframe>
-</section>
-
-<section>
-<h2>Рассказ очевидца</h2>
-<p><em>«Каждую субботу мы ходили в эту баню. Там пахло мылом, паром и сушёными травами. Местные женщины угощали нас чаем, рассказывали новости с фронта. Эти часы тепла помогали не сойти с ума от тревоги».</em></p>
-<p style="text-align:right;">— Из воспоминаний З. И. Громовой</p>
-</section>
-
-<section>
-<h2>Аудиоэкскурсия</h2>
-<button id="playAudio">▶ Прослушать экскурсию</button>
-</section>
-
-<section>
-<h2>Источники</h2>
-<ul>
-  <li>Государственный архив кинофотодокументов Узбекистана</li>
-  <li>Проект «Ташкент военного времени»</li>
-  <li>Семейные коллекции эвакуированных, 1942–1944</li>
-</ul>
-</section>
-
-<section>
-<h2>Форма обратной связи</h2>
-<form>
-  <input type="text" placeholder="Ваше имя">
-  <textarea rows="4" placeholder="Ваше сообщение..."></textarea>
-  <button type="submit">Отправить</button>
-</form>
-</section>
-
-<footer>© Исторический проект «Память 1940-х», 2025</footer>
-
-<script>
-// === Галерея с миниатюрами ===
-const modal = document.getElementById("modal");
-const modalImg = document.getElementById("modal-img");
-const captionText = document.getElementById("caption");
-const images = document.querySelectorAll(".gallery img");
-const closeBtn = document.querySelector("#modal .close");
-const prevBtn = document.getElementById("prev");
-const nextBtn = document.getElementById("next");
-const thumbnailBar = document.getElementById("thumbnailBar");
-let currentIndex = 0;
-
-images.forEach((img, i) => {
-  const thumb = document.createElement("img");
-  thumb.src = img.src;
-  thumb.alt = img.alt;
-  thumb.title = img.alt;
-  thumb.onclick = () => showImage(i);
-  thumbnailBar.appendChild(thumb);
-});
-const thumbs = document.querySelectorAll(".thumbnail-bar img");
-
-function showImage(index) {
-  if (index < 0) index = images.length - 1;
-  if (index >= images.length) index = 0;
-  currentIndex = index;
-  modal.style.display = "block";
-  modalImg.src = images[index].src;
-  modalImg.alt = images[index].alt;
-  captionText.innerHTML = images[index].alt;
-
-  thumbs.forEach(t => t.classList.remove("active"));
-  if (thumbs[index]) {
-    thumbs[index].classList.add("active");
-    thumbs[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-  }
-}
-prevBtn.onclick = () => showImage(currentIndex - 1);
-nextBtn.onclick = () => showImage(currentIndex + 1);
-closeBtn.onclick = () => modal.style.display = "none";
-window.onclick = e => { if(e.target === modal) modal.style.display = "none"; }
-window.onkeydown = e => {
-  if(modal.style.display === "block"){
-    if(e.key === "ArrowRight") showImage(currentIndex + 1);
-    if(e.key === "ArrowLeft") showImage(currentIndex - 1);
-    if(e.key === "Escape") modal.style.display = "none";
-  }
-}
-
-// === Свайпы для сенсорных устройств ===
-let startX = 0;
-let isSwiping = false;
-modalImg.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; isSwiping = true; });
-modalImg.addEventListener('touchend', (e) => {
-    if (!isSwiping) return;
-    const diff = startX - e.changedTouches[0].clientX;
-    if (diff > 50) showImage(currentIndex + 1);
-    else if (diff < -50) showImage(currentIndex - 1);
-    isSwiping = false;
-});
-
-// === Автопрокрутка миниатюр ===
-function autoScroll() {
-  thumbnailBar.scrollLeft += 0.5;
-  if (thumbnailBar.scrollLeft + thumbnailBar.clientWidth >= thumbnailBar.scrollWidth) thumbnailBar.scrollLeft = 0;
-  requestAnimationFrame(autoScroll);
-}
-window.addEventListener('load', autoScroll);
-
-// === Аудиоэкскурсия ===
-const playBtn = document.getElementById("playAudio");
-playBtn.onclick = () => {
-  const msg = new SpeechSynthesisUtterance(
-    "На странице, которую вы просматриваете, приводится исторический контекст о жизни людей в Среднеазиатской бане 1942 года. " +
-    "Там описывается атмосфера военного времени: женщины и мужчины приходили каждую субботу, чтобы отдохнуть, помыться, пообщаться и получить немного тепла и уюта. " +
-    "В бане пахло мылом, паром и сушёными травами, местные женщины угощали нас чаем и делились новостями с фронта."
-  );
-  msg.lang = "ru-RU";
-  msg.rate = 0.9;
-  msg.pitch = 1;
-  speechSynthesis.speak(msg);
-}
-</script>
 
 </body>
 </html>
