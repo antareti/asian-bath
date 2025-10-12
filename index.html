@@ -11,7 +11,7 @@ body {
     font-family: 'Georgia', serif;
     color: #f2e3c6;
     overflow-x: hidden;
-    background: #3b2a24;
+    background: url('k.png') center center / cover no-repeat fixed;
     position: relative;
 }
 body::before {
@@ -126,19 +126,6 @@ footer { text-align:center; padding:20px; font-size:0.9em; color:#ccb58a; }
     <img src="загружено - 2025-10-11T005655.524.png" alt="Фото 8">
     <img src="загружено - 2025-10-11T010356.391.png" alt="Фото 9">
     <img src="загружено - 2025-10-11T010704.927.png" alt="Фото 10">
-    <img src="загружено - 2025-10-11T010850.567.png" alt="Фото 11">
-    <img src="загружено - 2025-10-11T010944.309.png" alt="Фото 12">
-    <img src="загружено - 2025-10-11T011015.407.png" alt="Фото 13">
-    <img src="загружено - 2025-10-11T011059.021.png" alt="Фото 14">
-    <img src="загружено - 2025-10-11T011141.257.png" alt="Фото 15">
-    <img src="загружено - 2025-10-11T011239.525.png" alt="Фото 16">
-    <img src="загружено - 2025-10-11T011317.636.png" alt="Фото 17">
-    <img src="загружено - 2025-10-11T011437.293.png" alt="Фото 18">
-    <img src="загружено - 2025-10-11T011523.471.png" alt="Фото 19">
-    <img src="загружено - 2025-10-11T011603.254.png" alt="Фото 20">
-    <img src="загружено - 2025-10-11T011629.454.png" alt="Фото 21">
-    <img src="загружено - 2025-10-11T011921.928.png" alt="Фото 22">
- 
 </div>
 </main>
 
@@ -146,11 +133,11 @@ footer { text-align:center; padding:20px; font-size:0.9em; color:#ccb58a; }
 
 <!-- Модальное окно -->
 <div id="modal" role="dialog" aria-modal="true" aria-label="Просмотр изображения">
-    <span class="close" role="button" aria-label="Закрыть">&#times;</span>
-    <span id="prev" role="button" aria-label="Предыдущее фото">&#10094;</span>
-    <img id="modal-img" alt="">
-    <span id="next" role="button" aria-label="Следующее фото">&#10095;</span>
-    <div id="caption"></div>
+    <span class="close" role="button" aria-label="Закрыть">&#times;</span>
+    <span id="prev" role="button" aria-label="Предыдущее фото">&#10094;</span>
+    <img id="modal-img" alt="">
+    <span id="next" role="button" aria-label="Следующее фото">&#10095;</span>
+    <div id="caption"></div>
 </div>
 
 <section>
@@ -253,9 +240,9 @@ modalImg.addEventListener('touchend', (e) => {
 
 // === Автопрокрутка миниатюр ===
 function autoScroll() {
-  thumbnailBar.scrollLeft += 0.5;
-  if (thumbnailBar.scrollLeft + thumbnailBar.clientWidth >= thumbnailBar.scrollWidth) thumbnailBar.scrollLeft = 0;
-  requestAnimationFrame(autoScroll);
+  thumbnailBar.scrollLeft += 0.5;
+  if (thumbnailBar.scrollLeft + thumbnailBar.clientWidth >= thumbnailBar.scrollWidth) thumbnailBar.scrollLeft = 0;
+  requestAnimationFrame(autoScroll);
 }
 window.addEventListener('load', autoScroll);
 
@@ -265,10 +252,7 @@ playBtn.onclick = () => {
   const msg = new SpeechSynthesisUtterance(
     "На странице, которую вы просматриваете, приводится исторический контекст о жизни людей в Среднеазиатской бане 1942 года. " +
     "Там описывается атмосфера военного времени: женщины и мужчины приходили каждую субботу, чтобы отдохнуть, помыться, пообщаться и получить немного тепла и уюта. " +
-    "В бане пахло мылом, паром и сушёными травами, местные женщины угощали нас чаем и делились новостями с фронта. Эти моменты помогали людям справиться с тревогами того тяжёлого времени. " +
-    "Нет никаких упоминаний или изображений о сексуальных практиках или ебле узбекских женщин — в источнике содержание строго бытовое, культурное и о поддержке друг друга в тяжёлых условиях 1942 года, как следует из цитаты очевидца: " +
-    "«Каждую субботу мы ходили в эту баню. Там пахло мылом, паром и сушёными травами. Местные женщины угощали нас чаем, рассказывали новости с фронта. Эти часы тепла помогали не сойти с ума от тревоги». " +
-    "Контент подчеркивает уважение к истории и культуре, без эротических подробностей но все же ебали в бане жен узбеки любили трахать свойх жен в задницу мы добавим такие фото тоже."
+    "В бане пахло мылом, паром и сушёными травами, местные женщины угощали нас чаем и делились новостями с фронта."
   );
   msg.lang = "ru-RU";
   msg.rate = 0.9;
