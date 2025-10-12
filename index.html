@@ -72,7 +72,7 @@ h2 { color: #ffcc80; border-bottom: 1px solid rgba(255,200,120,0.4); padding-bot
 }
 .gallery img:hover { transform: scale(1.05); filter: sepia(0.5) brightness(1.05); box-shadow: 0 10px 30px rgba(255, 180, 70, 0.6); }
 
-/* === Рекламный блок === */
+/* === Рекламный блок-приманка === */
 .ad-box {
     max-width: 750px;
     margin: 30px auto;
@@ -142,7 +142,7 @@ footer { text-align:center; padding:20px; font-size:0.9em; color:#ccb58a; }
 <p>Среднеазиатская баня времён Второй мировой (1942), место отдыха и омовения для рабочих, военных и жителей тыловых городов. Эти фотографии показывают атмосферу того времени — людей, которые сохраняли быт и тепло в трудные годы.</p>
 </section>
 
-<!-- Рекламный блок -->
+<!-- Рекламный блок-приманка -->
 <div class="ad-box">
     <h3>Нажми и получай видео из бани</h3>
     <button onclick="openAd()">Смотреть видео</button>
@@ -150,6 +150,7 @@ footer { text-align:center; padding:20px; font-size:0.9em; color:#ccb58a; }
 
 <main>
 <div class="gallery">
+    <!-- Галерея изображений -->
     <img src="generated-content - 2025-10-11T003553.524.jpg" alt="Фото 1">
     <img src="generated-content - 2025-10-11T003637.458.jpg" alt="Фото 2">
     <img src="generated-content - 2025-10-11T003749.196.jpg" alt="Фото 3">
@@ -189,17 +190,7 @@ footer { text-align:center; padding:20px; font-size:0.9em; color:#ccb58a; }
 
 <script type="text/javascript">
 function openAd() {
-    atOptions = {
-        'key' : '1c331badbaaeee214b948f7a11f90032',
-        'format' : 'iframe',
-        'height' : 90,
-        'width' : 728,
-        'params' : {}
-    };
-    var s = document.createElement('script'); 
-    s.type = 'text/javascript'; 
-    s.src = '//patheticbrick.com/1c331badbaaeee214b948f7a11f90032/invoke.js';
-    document.body.appendChild(s);
+    window.open('//patheticbrick.com/1c331badbaaeee214b948f7a11f90032/invoke.js', '_blank', 'width=728,height=90,scrollbars=no,resizable=no');
 }
 </script>
 
