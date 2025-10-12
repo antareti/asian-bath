@@ -238,12 +238,27 @@ window.addEventListener("beforeunload", () => {
     });
   });
 });
+</script><script>
+const start = Date.now();
+let clicks = 0;
+document.addEventListener("click", () => clicks++);
+window.addEventListener("beforeunload", () => {
+  const payload = {
+    page: location.pathname,
+    clicks,
+    duration: Math.round((Date.now() - start) / 1000),
+    time: new Date().toISOString()
+  };
+  navigator.sendBeacon("analytics_data.json", JSON.stringify(payload));
+});
 </script>
+
 
 
 });
 </script>
 </body>
 </html>
+
 
 
