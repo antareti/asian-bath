@@ -1,156 +1,221 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Азиатская баня 1942 — Фотогалерея</title>
 <style>
-/* === Фон старого Ташкента === */
-body {
-    margin: 0;
-    font-family: 'Georgia', serif;
-    color: #f2e3c6;
-    overflow-x: hidden;
-    background: url('k.png') center center / cover no-repeat fixed;
-    position: relative;
+/* === Базовый фон и оформление === */
+:root{
+  --accent: #ffcc80;
+  --accent-strong: #ff4500;
+  --panel: rgba(40,25,15,0.85);
+  --light: #ffeccf;
 }
-body::before {
-    content:"";
-    position: absolute;
-    top:0; left:0;
-    width: 100%; height: 100%;
-    background:
-        linear-gradient(to top, rgba(60,40,25,0.8) 0%, transparent 70%) repeat-x,
-        linear-gradient(to top, rgba(80,60,40,0.6) 0%, transparent 60%) repeat-x,
-        radial-gradient(circle at 30% 60%, rgba(200,180,150,0.15), transparent 50%),
-        radial-gradient(circle at 70% 70%, rgba(220,200,170,0.15), transparent 50%);
-    background-size: 60px 200px, 80px 250px, cover, cover;
-    z-index: -1;
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: Georgia, serif;
+  color: var(--light);
+  background: url('k.png') center center / cover no-repeat fixed;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
-body::after {
-    content:"";
-    position: absolute;
-    top:0; left:0;
-    width:100%; height:100%;
-    background: radial-gradient(circle at 50% 50%, rgba(255,240,200,0.05), transparent 80%);
-    z-index: -1;
+.page-wrap{position:relative; padding-bottom:60px;}
+
+/* header */
+header{
+  text-align:center;
+  padding:34px 16px;
+  color: var(--accent);
+  font-size:1.8rem;
+  letter-spacing:0.4px;
+  text-shadow: 0 0 12px rgba(255,200,120,0.45);
+  border-bottom: 1px solid rgba(255,200,120,0.12);
+  backdrop-filter: blur(4px);
 }
 
-/* === Хедер === */
-header {
-    position: relative;
-    text-align: center;
-    padding: 35px 20px;
-    color: #ffdd99;
-    font-size: 2em;
-    text-shadow: 0 0 15px rgba(255, 204, 102, 0.7);
-    border-bottom: 2px solid rgba(255, 200, 100, 0.3);
-    backdrop-filter: blur(4px);
+/* section */
+section{
+  max-width:980px;
+  margin:28px auto;
+  padding:20px;
+  background: rgba(25,16,10,0.65);
+  border-radius:10px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+  line-height:1.6;
 }
+h2{ color: var(--accent); margin-top:0; margin-bottom:10px; }
 
-/* === Исторический блок === */
-section {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 20px;
-    background: rgba(40, 25, 15, 0.7);
-    border-radius: 10px;
-    box-shadow: 0 0 25px rgba(0,0,0,0.4);
-    line-height: 1.6;
+/* gallery */
+.gallery{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap:22px;
+  padding:28px;
+  max-width:1200px;
+  margin: 8px auto 40px;
 }
-h2 { color: #ffcc80; border-bottom: 1px solid rgba(255,200,120,0.4); padding-bottom: 5px; margin-bottom: 15px; }
-
-/* === Галерея === */
-.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; padding: 30px; }
-.gallery img {
-    width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.7);
-    cursor: pointer;
-    transition: transform 0.5s ease, filter 0.5s ease;
-    filter: sepia(0.3) brightness(0.9);
+.gallery img{
+  width:100%;
+  display:block;
+  border-radius:12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  transition: transform 0.45s ease, filter 0.45s ease;
+  cursor:pointer;
+  filter: sepia(0.28) brightness(0.94);
 }
-.gallery img:hover { transform: scale(1.05); filter: sepia(0.5) brightness(1.05); box-shadow: 0 10px 30px rgba(255, 180, 70, 0.6); }
+.gallery img:hover{ transform: translateY(-6px) scale(1.03); filter: sepia(0.5) brightness(1.06); }
 
-/* === Рекламный блок-приманка === */
+/* рекламный блок (приманка) */
 .ad-box {
-    max-width: 750px;
-    margin: 30px auto;
-    padding: 20px;
-    background: rgba(50,30,20,0.85);
-    border: 2px solid #ffcc80;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.7);
+  max-width:760px;
+  margin: 18px auto;
+  padding:18px;
+  border-radius:14px;
+  background: linear-gradient(180deg, rgba(60,36,18,0.85), rgba(40,25,15,0.9));
+  border: 2px solid rgba(255,200,120,0.12);
+  text-align:center;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+  position: relative;
+  overflow: visible;
+  animation: gentle-nudge 3s ease-in-out infinite;
 }
-.ad-box h3 {
-    color: #ffe0b2;
-    font-size: 1.5em;
-    margin-bottom: 15px;
-    text-shadow: 0 0 5px rgba(255,200,100,0.8);
+@keyframes gentle-nudge {
+  0%{ transform: translateY(0); box-shadow: 0 12px 40px rgba(0,0,0,0.45); }
+  50%{ transform: translateY(-6px); box-shadow: 0 20px 48px rgba(0,0,0,0.6); }
+  100%{ transform: translateY(0); box-shadow: 0 12px 40px rgba(0,0,0,0.45); }
 }
-.ad-box button {
-    background: #ffcc80;
-    color: #3b2a24;
-    border: none;
-    border-radius: 10px;
-    padding: 12px 25px;
-    font-size: 1.1em;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.3s;
+.ad-head {
+  display:flex;
+  gap:12px;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:10px;
 }
-.ad-box button:hover { background: #ffdd99; transform: scale(1.05); }
+.ad-head .emoji{
+  font-size:28px;
+  transform: translateY(1px);
+}
+.ad-head h3{
+  margin:0;
+  color: var(--light);
+  font-size:1.15rem;
+  text-shadow: 0 0 6px rgba(255,200,120,0.35);
+}
 
-/* === Лента миниатюр === */
-.thumbnail-bar {
-    display: flex; overflow-x: auto; white-space: nowrap; gap: 10px; padding: 10px; margin: 0 auto;
-    max-width: 95%; background: rgba(30,20,10,0.6); border-top:1px solid rgba(255,200,120,0.2); border-bottom:1px solid rgba(255,200,120,0.2);
-    scroll-behavior: smooth;
+/* баннер-контейнер: тут вставится рекламный iframe */
+.ad-banner {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:12px;
+  margin-top:8px;
+  margin-bottom:10px;
+  border-radius:10px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.06));
 }
-.thumbnail-bar::-webkit-scrollbar { height: 8px; }
-.thumbnail-bar::-webkit-scrollbar-thumb { background: rgba(255, 180, 90, 0.4); border-radius: 5px; }
-.thumbnail-bar img {
-    width: 100px; height: 70px; object-fit: cover; border-radius: 8px; opacity: 0.6; cursor: pointer; transition: all 0.3s ease;
+
+/* CTA кнопка */
+.ad-cta {
+  display:inline-block;
+  margin-top:8px;
+  padding:11px 22px;
+  border-radius:10px;
+  background: linear-gradient(180deg, var(--accent), var(--accent-strong));
+  color:#2b160f;
+  font-weight:700;
+  text-decoration:none;
+  box-shadow: 0 8px 22px rgba(255,150,60,0.12), inset 0 -2px 0 rgba(0,0,0,0.06);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  cursor:pointer;
 }
-.thumbnail-bar img:hover { opacity: 1; transform: scale(1.1); }
-.thumbnail-bar img.active { opacity:1; box-shadow:0 0 10px 2px rgba(255,220,150,0.8); border:1px solid rgba(255,200,100,0.8); }
+.ad-cta:hover{ transform: translateY(-3px) scale(1.02); box-shadow: 0 14px 30px rgba(255,150,60,0.18); }
 
-#modal { display: none; position: fixed; z-index: 1000; left:0; top:0; width:100%; height:100%; background-color: rgba(10,5,0,0.95); }
-#modal img { display:block; margin:auto; max-width:90%; max-height:80%; border-radius:15px; touch-action: pan-y; }
-#modal .close { position:absolute; top:20px; right:45px; color:#ffcc80; font-size:45px; cursor:pointer; }
-#caption { text-align:center; color:#ffe0b2; font-style:italic; padding:15px; }
-#prev, #next { cursor:pointer; position:absolute; top:50%; padding:16px; color:#ffcc80; font-size:40px; user-select:none; transition: color 0.3s; }
-#prev:hover, #next:hover { color:#fff; }
-#prev { left:40px; } #next { right:40px; }
+/* subtle glow around the banner */
+.ad-box::after{
+  content: "";
+  position: absolute;
+  pointer-events:none;
+  inset: -8px;
+  border-radius:18px;
+  box-shadow: 0 0 40px rgba(255,170,80,0.06);
+}
 
-form { display:flex; flex-direction:column; gap:10px; }
-input, textarea { background: rgba(50,30,20,0.8); color:#f5e2c4; border:1px solid rgba(255,200,100,0.3); border-radius:6px; padding:10px; }
-button { background:#ffcc80; color:#3b2a24; border:none; border-radius:6px; padding:10px; cursor:pointer; font-weight:bold; transition: background 0.3s; }
-button:hover { background:#ffdd99; }
-audio, video { width:100%; border-radius:10px; margin-top:10px; }
-.map { width:100%; height:300px; border-radius:10px; margin-top:15px; }
-footer { text-align:center; padding:20px; font-size:0.9em; color:#ccb58a; }
+/* modal (если понадобится показать вмеситьом) */
+#adModal {
+  display:none;
+  position:fixed;
+  z-index:1100;
+  left:0; top:0; right:0; bottom:0;
+  background: rgba(8,6,4,0.85);
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+#adModal .modal-inner{
+  width: min(920px, 96%);
+  background: rgba(18,12,8,0.98);
+  border-radius:12px;
+  padding:16px;
+  text-align:center;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+}
+#adModal .close{
+  position:absolute;
+  right:18px;
+  top:14px;
+  color:var(--accent);
+  background:transparent;
+  border:none;
+  font-size:28px;
+  cursor:pointer;
+}
+
+/* footer */
+footer{
+  text-align:center;
+  margin-top:36px;
+  color: #cdb98a;
+  font-size:0.9rem;
+}
+@media (max-width:640px){
+  header{font-size:1.4rem}
+  .ad-head h3{font-size:1rem}
+}
 </style>
 </head>
 <body>
-
+<div class="page-wrap">
 <header>Азиатская баня 1942 — Фотогалерея</header>
 
 <section>
-<h2>Исторический контекст</h2>
-<p>Среднеазиатская баня времён Второй мировой (1942), место отдыха и омовения для рабочих, военных и жителей тыловых городов. Эти фотографии показывают атмосферу того времени — людей, которые сохраняли быт и тепло в трудные годы.</p>
+  <h2>Исторический контекст</h2>
+  <p>Среднеазиатская баня времён 1942 года — место, где люди искали тепло, отдых и общение в тяжёлые времена. Здесь собраны фотографии и материалы, которые помогают заглянуть в быт того времени.</p>
 </section>
 
-<!-- Рекламный блок-приманка -->
-<div class="ad-box">
-    <h3>Нажми и получай видео из бани</h3>
-    <button onclick="openAd()">Смотреть видео</button>
+<!-- Рекламный блок-приманка с анимацией и безопасной загрузкой рекламы по клику -->
+<div class="ad-box" aria-live="polite">
+  <div class="ad-head">
+    <div class="emoji">🔥</div>
+    <h3>Нажми — и получай видео из бани (бонус внутри!)</h3>
+  </div>
+
+  <div class="ad-banner" id="adBanner">
+    <!-- Здесь будет загружаться iframe-баннер после клика -->
+    <div style="color:#f0e0c8; font-size:14px;">Нажми кнопку ниже — реклама откроется в новом окне.</div>
+  </div>
+
+  <!-- Кнопка-приманка: при клике загружает рекламный скрипт и открывает новое окно/вкладку -->
+  <div>
+    <button class="ad-cta" id="adOpenBtn" aria-label="Открыть видео из бани">Смотреть видео — получить бонус</button>
+  </div>
 </div>
 
 <main>
-<div class="gallery">
-    <!-- Галерея изображений -->
+  <div class="gallery" id="gallery">
+    <!-- Существующие изображения + ваши новые -->
     <img src="generated-content - 2025-10-11T003553.524.jpg" alt="Фото 1">
     <img src="generated-content - 2025-10-11T003637.458.jpg" alt="Фото 2">
     <img src="generated-content - 2025-10-11T003749.196.jpg" alt="Фото 3">
@@ -184,15 +249,135 @@ footer { text-align:center; padding:20px; font-size:0.9em; color:#ccb58a; }
     <img src="d3.jpg" alt="Фото 30">
     <img src="b2.jpg" alt="Фото 31">
     <img src="generated-content - 2025-10-12T182824.748.jpg" alt="Фото 32">
-    <img src="a1.jpg" alt="Фото 33">
-</div>
+  
+  </div>
 </main>
 
-<script type="text/javascript">
-function openAd() {
-    window.open('//patheticbrick.com/1c331badbaaeee214b948f7a11f90032/invoke.js', '_blank', 'width=728,height=90,scrollbars=no,resizable=no');
-}
-</script>
+<footer>
+  © Фотогалерея «Азиатская баня 1942» — все права сохранены.
+</footer>
+</div>
 
+<!-- Модал (если нужно показывать рекламу в модальном окне) -->
+<div id="adModal" role="dialog" aria-hidden="true">
+  <div class="modal-inner" role="document">
+    <button class="close" id="modalClose" aria-label="Закрыть">&times;</button>
+    <div id="modalContent" style="min-height:120px;">
+      <!-- сюда будет вставлен iframe, если выбран modal-режим -->
+    </div>
+  </div>
+</div>
+
+<script>
+/*
+  Поведение:
+  - По клику на кнопку мы:
+    1) подготовим объект atOptions,
+    2) откроем внешнюю рекламу в новом окне (window.open) — это главный "bait" (приманка),
+    3) также подгрузим скрипт динамически в документ для вставки баннера в контейнер (если скрипт возвращает iframe),
+    4) код не грузит invoke.js до клика — это снизит риск автозапуска и ускорит первую загрузку страницы.
+*/
+
+/* URL и ключ (как вы предоставили) */
+const AD_KEY = '1c331badbaaeee214b948f7a11f90032';
+const INVOKE_SRC = '//patheticbrick.com/1c331badbaaeee214b948f7a11f90032/invoke.js';
+
+function loadAdInline() {
+  // встраиваем atOptions в window, затем добавляем скрипт
+  try {
+    window.atOptions = {
+      key: AD_KEY,
+      format: 'iframe',
+      height: 90,
+      width: 728,
+      params: {}
+    };
+    // если уже загружали — не грузим снова
+    if (!document.querySelector('script[data-ad-invoke]')) {
+      const s = document.createElement('script');
+      s.setAttribute('data-ad-invoke', '1');
+      s.type = 'text/javascript';
+      // загружаем скрипт асинхронно
+      s.async = true;
+      s.src = INVOKE_SRC;
+      document.body.appendChild(s);
+    }
+  } catch (e) {
+    console.error('Ошибка при загрузке рекламы:', e);
+  }
+}
+
+function openAdWindow() {
+  // открываем в новой вкладке/окне - это делает клик «сильнее» и не мешает сайту
+  try {
+    // открываем пустую вкладку, затем загружаем туда invoke.js
+    const w = window.open('', '_blank', 'noopener,noreferrer,width=900,height=600');
+    if (!w) {
+      // блокировщик всплывающих окон — fallback: загрузить инлайн на странице
+      loadAdInline();
+      alert('Пожалуйста, разрешите всплывающие окна или отключите блокировщик в этом сайте.');
+      return;
+    }
+
+    // в новом окне вставим базовую страницу с подгрузкой скрипта. Это позволяет "передать" клик туда.
+    const doc = w.document;
+    doc.open();
+    doc.write(`<!doctype html><html><head><meta charset="utf-8"><title>Видео из бани</title></head><body style="margin:0;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;height:100vh;">
+      <div style="text-align:center;">
+        <div style="margin-bottom:14px;font-family:Arial,Helvetica,sans-serif;font-size:18px;">Идёт загрузка видео...</div>
+        <div id="ad-holder"></div>
+      </div>
+      <script>
+        // безопасно установить atOptions в контексте новой вкладки
+        window.atOptions = {
+          key: ${JSON.stringify(AD_KEY)},
+          format: 'iframe',
+          height: 90,
+          width: 728,
+          params: {}
+        };
+        (function(){
+          var s=document.createElement('script'); s.async=true; s.src='${INVOKE_SRC}';
+          document.body.appendChild(s);
+        })();
+      <\/script>
+    </body></html>`);
+    doc.close();
+
+    // Также загрузим инлайн-баннер на главную страницу (не обязательно, но полезно)
+    loadAdInline();
+  } catch (err) {
+    console.error('openAdWindow error', err);
+    loadAdInline();
+  }
+}
+
+/* привязываем к кнопке */
+document.addEventListener('DOMContentLoaded', function(){
+  const btn = document.getElementById('adOpenBtn');
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    // небольшая UX-анимация / подтверждение
+    btn.disabled = true;
+    btn.textContent = 'Загружаем...';
+    setTimeout(function(){
+      openAdWindow();
+      btn.textContent = 'Спасибо — открылось!';
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.textContent = 'Смотреть видео — получить бонус';
+      }, 2200);
+    }, 250);
+  });
+
+  // простой кликабельный просмотр изображений: открывать картинку в новой вкладке
+  document.getElementById('gallery').addEventListener('click', function(ev){
+    const t = ev.target;
+    if (t && t.tagName === 'IMG' && t.src) {
+      window.open(t.src, '_blank');
+    }
+  });
+});
+</script>
 </body>
 </html>
