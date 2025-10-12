@@ -72,6 +72,36 @@ h2 { color: #ffcc80; border-bottom: 1px solid rgba(255,200,120,0.4); padding-bot
 }
 .gallery img:hover { transform: scale(1.05); filter: sepia(0.5) brightness(1.05); box-shadow: 0 10px 30px rgba(255, 180, 70, 0.6); }
 
+/* === Рекламный блок === */
+.ad-box {
+    max-width: 750px;
+    margin: 30px auto;
+    padding: 20px;
+    background: rgba(50,30,20,0.85);
+    border: 2px solid #ffcc80;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.7);
+}
+.ad-box h3 {
+    color: #ffe0b2;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    text-shadow: 0 0 5px rgba(255,200,100,0.8);
+}
+.ad-box button {
+    background: #ffcc80;
+    color: #3b2a24;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+.ad-box button:hover { background: #ffdd99; transform: scale(1.05); }
+
 /* === Лента миниатюр === */
 .thumbnail-bar {
     display: flex; overflow-x: auto; white-space: nowrap; gap: 10px; padding: 10px; margin: 0 auto;
@@ -112,6 +142,12 @@ footer { text-align:center; padding:20px; font-size:0.9em; color:#ccb58a; }
 <p>Среднеазиатская баня времён Второй мировой (1942), место отдыха и омовения для рабочих, военных и жителей тыловых городов. Эти фотографии показывают атмосферу того времени — людей, которые сохраняли быт и тепло в трудные годы.</p>
 </section>
 
+<!-- Рекламный блок -->
+<div class="ad-box">
+    <h3>Нажми и получай видео из бани</h3>
+    <button onclick="openAd()">Смотреть видео</button>
+</div>
+
 <main>
 <div class="gallery">
     <img src="generated-content - 2025-10-11T003553.524.jpg" alt="Фото 1">
@@ -137,7 +173,6 @@ footer { text-align:center; padding:20px; font-size:0.9em; color:#ccb58a; }
     <img src="загружено - 2025-10-11T011629.454.png" alt="Фото 21">
     <img src="загружено - 2025-10-11T011921.928.png" alt="Фото 22">
 
-    <!-- Новые изображения 2025-10-12 -->
     <img src="загружено - 2025-10-12T184842.914.png" alt="Фото 23">
     <img src="загружено - 2025-10-12T184758.947.png" alt="Фото 24">
     <img src="загружено - 2025-10-12T184712.678.png" alt="Фото 25">
@@ -148,11 +183,25 @@ footer { text-align:center; padding:20px; font-size:0.9em; color:#ccb58a; }
     <img src="d3.jpg" alt="Фото 30">
     <img src="b2.jpg" alt="Фото 31">
     <img src="generated-content - 2025-10-12T182824.748.jpg" alt="Фото 32">
- 
+    <img src="a1.jpg" alt="Фото 33">
 </div>
 </main>
 
-<!-- Остальной код (миниатюры, модалка, карта и пр.) остаётся без изменений -->
+<script type="text/javascript">
+function openAd() {
+    atOptions = {
+        'key' : '1c331badbaaeee214b948f7a11f90032',
+        'format' : 'iframe',
+        'height' : 90,
+        'width' : 728,
+        'params' : {}
+    };
+    var s = document.createElement('script'); 
+    s.type = 'text/javascript'; 
+    s.src = '//patheticbrick.com/1c331badbaaeee214b948f7a11f90032/invoke.js';
+    document.body.appendChild(s);
+}
+</script>
+
 </body>
 </html>
-
