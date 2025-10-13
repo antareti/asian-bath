@@ -1,119 +1,124 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Азиатская баня Ташкент 1942 — 2025 Фотогалерея</title>
-<style>
-:root{
-  --accent: #ffcc80;
-  --accent-strong: #ff4500;
-  --light: #ffeccf;
-}
-body{
-  margin:0;
-  font-family: Georgia, serif;
-  color: var(--light);
-  background: url('k.png') center center / cover no-repeat fixed;
-}
-header{ text-align:center; padding:34px 16px; color: var(--accent); font-size:1.8rem; text-shadow:0 0 12px rgba(255,200,120,0.45);}
-.gallery{
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-  gap:22px;
-  max-width:1200px;
-  margin:28px auto;
-  padding:0 16px;
-}
-.gallery img{
-  width:100%;
-  border-radius:12px;
-  cursor:pointer;
-  box-shadow:0 10px 30px rgba(0,0,0,0.6);
-  transition: transform 0.3s ease;
-}
-.gallery img:hover{ transform: scale(1.03); }
-#adModal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background: rgba(0,0,0,0.85);
-  align-items:center;
-  justify-content:center;
-  z-index:1000;
-}
-#adModal img{
-  max-width:90%;
-  max-height:90%;
-  border-radius:12px;
-}
-.closeModal{
-  position:absolute;
-  top:20px;
-  right:30px;
-  font-size:32px;
-  color:#fff;
-  cursor:pointer;
-}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Азиатская баня Ташкент 1942 — 2025 Фотогалерея</title>
+  <style>
+    :root {
+      --accent: #ffcc80;
+      --accent-strong: #ff4500;
+      --light: #ffeccf;
+    }
+    body {
+      margin:0;
+      font-family: Georgia, serif;
+      color: var(--light);
+      background: url('k.png') center center / cover no-repeat fixed;
+    }
+    header { text-align:center; padding:34px 16px; color: var(--accent); font-size:1.8rem; text-shadow:0 0 12px rgba(255,200,120,0.45);}
+    .gallery {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+      gap:22px;
+      max-width:1200px;
+      margin:28px auto;
+      padding:0 16px;
+    }
+    .gallery img {
+      width:100%;
+      border-radius:12px;
+      cursor:pointer;
+      box-shadow:0 10px 30px rgba(0,0,0,0.6);
+      transition: transform 0.3s ease;
+    }
+    .gallery img:hover { transform: scale(1.03); }
+    #adModal {
+      display:none;
+      position:fixed;
+      inset:0;
+      background: rgba(0,0,0,0.85);
+      align-items:center;
+      justify-content:center;
+      z-index:1000;
+    }
+    #adModal img {
+      max-width:90%;
+      max-height:90%;
+      border-radius:12px;
+    }
+    .closeModal {
+      position:absolute;
+      top:20px;
+      right:30px;
+      font-size:32px;
+      color:#fff;
+      cursor:pointer;
+    }
+  </style>
 </head>
 <body>
+  <header>Азиатская баня 1942 — Фотогалерея</header>
+  <main class="gallery"></main>
+  <div id="adModal">
+    <span class="closeModal">×</span>
+    <img src="" alt="Увеличенное фото">
+  </div>
+  <script>
+    const photos = [
+      'b2.jpg',
+      'd3.jpg',
+      'g4.jpg',
+      'generated-content%20-%202025-10-11T003553.524.jpg',
+      'generated-content%20-%202025-10-11T003637.458.jpg',
+      'generated-content%20-%202025-10-11T003749.196.jpg',
+      'generated-content%20-%202025-10-11T003905.441.jpg',
+      'generated-content%20-%202025-10-11T004105.514.jpg',
+      'generated-content%20-%202025-10-11T004456.688.jpg',
+      'generated-content%20-%202025-10-11T004552.444.jpg',
+      'generated-content%20-%202025-10-12T182824.748.jpg',
+      'а1.jpg',
+      'загружено%20-%202025-10-11T005655.524.png',
+      'загружено%20-%202025-10-11T010356.391.png',
+      'загружено%20-%202025-10-11T010704.927.png',
+      'загружено%20-%202025-10-11T010850.567.png',
+      'загружено%20-%202025-10-11T010944.309.png',
+      'загружено%20-%202025-10-11T011015.407.png',
+      'загружено%20-%202025-10-11T011059.021.png',
+      'загружено%20-%202025-10-11T011141.257.png',
+      'загружено%20-%202025-10-11T011239.525.png',
+      'загружено%20-%202025-10-11T011317.636.png',
+      'загружено%20-%202025-10-11T011437.293.png',
+      'загружено%20-%202025-10-11T011523.471.png',
+      'загружено%20-%202025-10-11T011603.254.png',
+      'загружено%20-%202025-10-11T011629.454.png',
+      'загружено%20-%202025-10-11T011921.928.png',
+      'загружено%20-%202025-10-12T184319.449.png',
+      'загружено%20-%202025-10-12T184346.761.png',
+      'загружено%20-%202025-10-12T184419.593.png',
+      'загружено%20-%202025-10-12T184712.678.png',
+      'generated-content%20-%202025-10-12T182824.748.jpg'
+    ];
 
-<header>Азиатская баня 1942 — Фотогалерея</header>
+    const gallery = document.querySelector('.gallery');
+    photos.forEach((photo, index) => {
+      const img = document.createElement('img');
+      img.src = photo;
+      img.alt = `Фото ${index + 1}`;
+      gallery.appendChild(img);
+    });
 
-<main class="gallery">
-  <img src="b2.jpg" alt="Фото 1">
-  <img src="d3.jpg" alt="Фото 2">
-  <img src="g4.jpg" alt="Фото 3">
-  <img src="generated-content%20-%202025-10-11T003553.524.jpg" alt="Фото 4">
-  <img src="generated-content%20-%202025-10-11T003637.458.jpg" alt="Фото 5">
-  <img src="generated-content%20-%202025-10-11T003749.196.jpg" alt="Фото 6">
-  <img src="generated-content%20-%202025-10-11T003905.441.jpg" alt="Фото 7">
-  <img src="generated-content%20-%202025-10-11T004105.514.jpg" alt="Фото 8">
-  <img src="generated-content%20-%202025-10-11T004456.688.jpg" alt="Фото 9">
-  <img src="generated-content%20-%202025-10-11T004552.444.jpg" alt="Фото 10">
-  <img src="generated-content%20-%202025-10-12T182824.748.jpg" alt="Фото 11">
-  <img src="а1.jpg" alt="Фото 12">
-  <img src="загружено%20-%202025-10-11T005655.524.png" alt="Фото 13">
-  <img src="загружено%20-%202025-10-11T010356.391.png" alt="Фото 14">
-  <img src="загружено%20-%202025-10-11T010704.927.png" alt="Фото 15">
-  <img src="загружено%20-%202025-10-11T010850.567.png" alt="Фото 16">
-  <img src="загружено%20-%202025-10-11T010944.309.png" alt="Фото 17">
-  <img src="загружено%20-%202025-10-11T011015.407.png" alt="Фото 18">
-  <img src="загружено%20-%202025-10-11T011059.021.png" alt="Фото 19">
-  <img src="загружено%20-%202025-10-11T011141.257.png" alt="Фото 20">
-  <img src="загружено%20-%202025-10-11T011239.525.png" alt="Фото 21">
-  <img src="загружено%20-%202025-10-11T011317.636.png" alt="Фото 22">
-  <img src="загружено%20-%202025-10-11T011437.293.png" alt="Фото 23">
-  <img src="загружено%20-%202025-10-11T011523.471.png" alt="Фото 24">
-  <img src="загружено%20-%202025-10-11T011603.254.png" alt="Фото 25">
-  <img src="загружено%20-%202025-10-11T011629.454.png" alt="Фото 26">
-  <img src="загружено%20-%202025-10-11T011921.928.png" alt="Фото 27">
-  <img src="загружено%20-%202025-10-12T184319.449.png" alt="Фото 28">
-  <img src="загружено%20-%202025-10-12T184346.761.png" alt="Фото 29">
-  <img src="загружено%20-%202025-10-12T184419.593.png" alt="Фото 30">
-  <img src="загружено%20-%202025-10-12T184712.678.png" alt="Фото 31">
-  <img src="generated-content%20-%202025-10-12T182824.748.jpg" alt="Фото 32">
-</main>
-
-<div id="adModal">
-  <span class="closeModal">&times;</span>
-  <img src="" alt="Увеличенное фото">
-</div>
-
-<script>
-const modal = document.getElementById('adModal');
-const modalImg = modal.querySelector('img');
-document.querySelectorAll('.gallery img').forEach(img=>{
-  img.addEventListener('click', ()=>{
-    modal.style.display='flex';
-    modalImg.src=img.src;
-  });
-});
-modal.querySelector('.closeModal').addEventListener('click', ()=>{
-  modal.style.display='none';
-});
-</script>
-
+    const modal = document.getElementById('adModal');
+    const modalImg = modal.querySelector('img');
+    gallery.addEventListener('click', (e) => {
+      if (e.target.tagName === 'IMG') {
+        modal.style.display = 'flex';
+        modalImg.src = e.target.src;
+      }
+    });
+    modal.querySelector('.closeModal').addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+  </script>
 </body>
 </html>
