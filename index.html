@@ -43,6 +43,7 @@
       z-index:1000;
       opacity:0;
       transition: opacity 0.4s ease;
+      flex-direction: column;
     }
     #adModal.show {
       display:flex;
@@ -50,7 +51,7 @@
     }
     #adModal img {
       max-width:90%;
-      max-height:90%;
+      max-height:70%;
       border-radius:12px;
       transform: scale(0.7);
       opacity:0;
@@ -68,6 +69,23 @@
       color:#fff;
       cursor:pointer;
     }
+    .modal-description {
+      margin-top: 20px;
+      text-align: center;
+      color: var(--accent);
+      font-size: 1.3rem;
+      max-width: 90%;
+      padding: 10px 20px;
+      background: rgba(0,0,0,0.5);
+      border-radius: 8px;
+      opacity:0;
+      transform: translateY(20px);
+      transition: opacity 0.4s ease 0.2s, transform 0.4s ease 0.2s;
+    }
+    #adModal.show .modal-description {
+      opacity:1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body>
@@ -75,56 +93,60 @@
   <main class="gallery"></main>
   <div id="adModal">
     <span class="closeModal">×</span>
-    <img src="" alt="Увеличенное фото">
+    <img alt="Увеличенное фото" />
+    <div class="modal-description"></div>
   </div>
   <script>
     const photos = [
-      'b2.jpg',
-      'd3.jpg',
-      'g4.jpg',
-      'generated-content%20-%202025-10-11T003553.524.jpg',
-      'generated-content%20-%202025-10-11T003637.458.jpg',
-      'generated-content%20-%202025-10-11T003749.196.jpg',
-      'generated-content%20-%202025-10-11T003905.441.jpg',
-      'generated-content%20-%202025-10-11T004105.514.jpg',
-      'generated-content%20-%202025-10-11T004456.688.jpg',
-      'generated-content%20-%202025-10-11T004552.444.jpg',
-      'generated-content%20-%202025-10-11T004552.444.jpg',
-      'generated-content%20-%202025-10-12T182824.748.jpg',
-      'а1.jpg',
-      'загружено%20-%202025-10-11T005655.524.png',
-      'загружено%20-%202025-10-11T010356.391.png',
-      'загружено%20-%202025-10-11T010704.927.png',
-      'загружено%20-%202025-10-11T010850.567.png',
-      'загружено%20-%202025-10-11T010944.309.png',
-      'загружено%20-%202025-10-11T011015.407.png',
-      'загружено%20-%202025-10-11T011059.021.png',
-      'загружено%20-%202025-10-11T011141.257.png',
-      'загружено%20-%202025-10-11T011239.525.png',
-      'загружено%20-%202025-10-11T011317.636.png',
-      'загружено%20-%202025-10-11T011437.293.png',
-      'загружено%20-%202025-10-11T011523.471.png',
-      'загружено%20-%202025-10-11T011603.254.png',
-      'загружено%20-%202025-10-11T011629.454.png',
-      'загружено%20-%202025-10-11T011921.928.png',
-      'загружено%20-%202025-10-12T184319.449.png',
-      'загружено%20-%202025-10-12T184346.761.png',
-      'загружено%20-%202025-10-12T184419.593.png',
-      'загружено%20-%202025-10-12T184712.678.png',
-      'generated-content%20-%202025-10-12T182824.748.jpg'
+      { img: 'b2.jpg', desc: 'Как правильно мыть голову' },
+      { img: 'd3.jpg', desc: 'Как мыть спину' },
+      { img: 'g4.jpg', desc: 'Как мыть ягодицы' },
+      { img: 'generated-content%20-%202025-10-11T003553.524.jpg', desc: 'Как ухаживать за интимной зоной' },
+      { img: 'generated-content%20-%202025-10-11T003637.458.jpg', desc: 'Как мыть ноги' },
+      { img: 'generated-content%20-%202025-10-11T003749.196.jpg', desc: 'Как мыть руки правильно' },
+      { img: 'generated-content%20-%202025-10-11T003905.441.jpg', desc: 'Как мыть уши' },
+      { img: 'generated-content%20-%202025-10-11T004105.514.jpg', desc: 'Как мыть шею' },
+      { img: 'generated-content%20-%202025-10-11T004456.688.jpg', desc: 'Как заботиться о коже' },
+      { img: 'generated-content%20-%202025-10-11T004552.444.jpg', desc: 'Как мыть лицо' },
+      { img: 'generated-content%20-%202025-10-11T004552.444.jpg', desc: 'Гигиена рук' },
+      { img: 'generated-content%20-%202025-10-12T182824.748.jpg', desc: 'Как правильно мыться в бане' },
+      { img: 'а1.jpg', desc: 'Гигиена тела в бане' },
+      { img: 'загружено%20-%202025-10-11T005655.524.png', desc: 'Как мыть плечи' },
+      { img: 'загружено%20-%202025-10-11T010356.391.png', desc: 'Как мыть грудь' },
+      { img: 'загружено%20-%202025-10-11T010704.927.png', desc: 'Как мыть живот' },
+      { img: 'загружено%20-%202025-10-11T010850.567.png', desc: 'Как мыть бедра' },
+      { img: 'загружено%20-%202025-10-11T010944.309.png', desc: 'Как мыть колени' },
+      { img: 'загружено%20-%202025-10-11T011015.407.png', desc: 'Как мыть голени' },
+      { img: 'загружено%20-%202025-10-11T011059.021.png', desc: 'Как мыть ступни' },
+      { img: 'загружено%20-%202025-10-11T011141.257.png', desc: 'Как мыть пальцы ног' },
+      { img: 'загружено%20-%202025-10-11T011239.525.png', desc: 'Гигиена ногтей' },
+      { img: 'загружено%20-%202025-10-11T011317.636.png', desc: 'Как мыть локти' },
+      { img: 'загружено%20-%202025-10-11T011437.293.png', desc: 'Как мыть предплечья' },
+      { img: 'загружено%20-%202025-10-11T011523.471.png', desc: 'Как мыть запястья' },
+      { img: 'загружено%20-%202025-10-11T011603.254.png', desc: 'Как мыть пальцы рук' },
+      { img: 'загружено%20-%202025-10-11T011629.454.png', desc: 'Гигиена между пальцами' },
+      { img: 'загружено%20-%202025-10-11T011921.928.png', desc: 'Как мыть подмышки' },
+      { img: 'загружено%20-%202025-10-12T184319.449.png', desc: 'Гигиена паховой области' },
+      { img: 'загружено%20-%202025-10-12T184346.761.png', desc: 'Как мыть поясницу' },
+      { img: 'загружено%20-%202025-10-12T184419.593.png', desc: 'Как правильно париться' },
+      { img: 'загружено%20-%202025-10-12T184712.678.png', desc: 'Общая гигиена в бане' },
+      { img: 'generated-content%20-%202025-10-12T182824.748.jpg', desc: 'Правила банной гигиены' }
     ];
     const gallery = document.querySelector('.gallery');
     photos.forEach((photo, index) => {
       const img = document.createElement('img');
-      img.src = photo;
+      img.src = photo.img;
       img.alt = `Фото ${index + 1}`;
+      img.dataset.description = photo.desc;
       gallery.appendChild(img);
     });
     const modal = document.getElementById('adModal');
     const modalImg = modal.querySelector('img');
+    const modalDesc = modal.querySelector('.modal-description');
     gallery.addEventListener('click', (e) => {
       if (e.target.tagName === 'IMG') {
         modalImg.src = e.target.src;
+        modalDesc.textContent = e.target.dataset.description;
         modal.style.display = 'flex';
         setTimeout(() => modal.classList.add('show'), 10);
       }
