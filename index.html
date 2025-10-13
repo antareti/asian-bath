@@ -8,183 +8,110 @@
 :root{
   --accent: #ffcc80;
   --accent-strong: #ff4500;
-  --panel: rgba(40,25,15,0.85);
   --light: #ffeccf;
 }
-*{box-sizing:border-box}
 body{
   margin:0;
   font-family: Georgia, serif;
   color: var(--light);
   background: url('k.png') center center / cover no-repeat fixed;
-  min-height:100vh;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
 }
-.page-wrap{position:relative; padding-bottom:60px;}
-header{
-  text-align:center;
-  padding:34px 16px;
-  color: var(--accent);
-  font-size:1.8rem;
-  letter-spacing:0.4px;
-  text-shadow: 0 0 12px rgba(255,200,120,0.45);
-  border-bottom: 1px solid rgba(255,200,120,0.12);
-  backdrop-filter: blur(4px);
-}
-section{
-  max-width:980px;
-  margin:28px auto;
-  padding:20px;
-  background: rgba(25,16,10,0.65);
-  border-radius:10px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.5);
-  line-height:1.6;
-}
-h2{ color: var(--accent); margin-top:0; margin-bottom:10px; }
+header{ text-align:center; padding:34px 16px; color: var(--accent); font-size:1.8rem; text-shadow:0 0 12px rgba(255,200,120,0.45);}
 .gallery{
   display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
   gap:22px;
-  padding:28px;
   max-width:1200px;
-  margin: 8px auto 40px;
+  margin:28px auto;
+  padding:0 16px;
 }
 .gallery img{
   width:100%;
-  display:block;
   border-radius:12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-  transition: transform 0.45s ease, filter 0.45s ease;
   cursor:pointer;
-  filter: sepia(0.28) brightness(0.94);
+  box-shadow:0 10px 30px rgba(0,0,0,0.6);
+  transition: transform 0.3s ease;
 }
-.gallery img:hover{
-  transform: translateY(-6px) scale(1.03);
-  filter: sepia(0.5) brightness(1.06);
+.gallery img:hover{ transform: scale(1.03); }
+#adModal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background: rgba(0,0,0,0.85);
+  align-items:center;
+  justify-content:center;
+  z-index:1000;
 }
-.ad-box {
-  max-width:760px;
-  margin: 18px auto;
-  padding:18px;
-  border-radius:14px;
-  background: linear-gradient(180deg, rgba(60,36,18,0.85), rgba(40,25,15,0.9));
-  border: 2px solid rgba(255,200,120,0.12);
-  text-align:center;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
-  position: relative;
-  overflow: visible;
-  animation: gentle-nudge 3s ease-in-out infinite;
+#adModal img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:12px;
 }
-@keyframes gentle-nudge {
-  0%{ transform: translateY(0); box-shadow: 0 12px 40px rgba(0,0,0,0.45); }
-  50%{ transform: translateY(-6px); box-shadow: 0 20px 48px rgba(0,0,0,0.6); }
-  100%{ transform: translateY(0); box-shadow: 0 12px 40px rgba(0,0,0,0.45); }
+.closeModal{
+  position:absolute;
+  top:20px;
+  right:30px;
+  font-size:32px;
+  color:#fff;
+  cursor:pointer;
 }
-.ad-head { display:flex; gap:12px; align-items:center; justify-content:center; margin-bottom:10px; }
-.ad-head .emoji{ font-size:28px; transform: translateY(1px); }
-.ad-head h3{ margin:0; color: var(--light); font-size:1.15rem; text-shadow: 0 0 6px rgba(255,200,120,0.35); }
-.ad-banner { display:flex; justify-content:center; align-items:center; padding:12px; margin-top:8px; margin-bottom:10px; border-radius:10px; background: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.06)); }
-.ad-cta { display:inline-block; margin-top:8px; padding:11px 22px; border-radius:10px; background: linear-gradient(180deg, var(--accent), var(--accent-strong)); color:#2b160f; font-weight:700; text-decoration:none; box-shadow: 0 8px 22px rgba(255,150,60,0.12), inset 0 -2px 0 rgba(0,0,0,0.06); transition: transform 0.18s ease, box-shadow 0.18s ease; cursor:pointer; }
-.ad-cta:hover{ transform: translateY(-3px) scale(1.02); box-shadow: 0 14px 30px rgba(255,150,60,0.18); }
-.ad-box::after{ content: ""; position: absolute; pointer-events:none; inset: -8px; border-radius:18px; box-shadow: 0 0 40px rgba(255,170,80,0.06); }
-#adModal { display:none; position:fixed; z-index:1100; left:0; top:0; right:0; bottom:0; background: rgba(8,6,4,0.85); align-items:center; justify-content:center; padding:20px; }
-#adModal .modal-inner{ width: min(920px, 96%); background: rgba(18,12,8,0.98); border-radius:12px; padding:16px; text-align:center; box-shadow: 0 30px 80px rgba(0,0,0,0.7); }
-#adModal .close{ position:absolute; right:18px; top:14px; color:var(--accent); background:transparent; border:none; font-size:28px; cursor:pointer; }
-footer{ text-align:center; margin-top:36px; color: #cdb98a; font-size:0.9rem; }
-@media (max-width:640px){ header{font-size:1.4rem} .ad-head h3{font-size:1rem} }
 </style>
 </head>
 <body>
 
-<audio src="11.mp3" autoplay loop hidden></audio>
-
-<div class="page-wrap">
 <header>Азиатская баня 1942 — Фотогалерея</header>
 
-<section>
-<h2>Исторический контекст</h2>
-<p>Среднеазиатская баня времён 1942 года — место, где люди искали тепло, отдых и общение в тяжёлые времена. Здесь собраны фотографии и материалы, которые помогают заглянуть в быт того времени.</p>
-</section>
-
-<div class="ad-box" aria-live="polite">
-  <div class="ad-head">
-    <div class="emoji">🔥</div>
-    <h3>Нажми — и получай видео из бани (бонус внутри!)</h3>
-  </div>
-  <div class="ad-banner" id="adBanner">
-    <div style="color:#f0e0c8; font-size:14px;">Нажми кнопку ниже — реклама откроется в новом окне.</div>
-  </div>
-  <div>
-    <button class="ad-cta" id="adOpenBtn" aria-label="Открыть видео из бани">Смотреть видео — получить бонус</button>
-  </div>
-</div>
-
-<main>
-<div class="gallery" id="gallery">
-  <img src="photo1.jpg" alt="Фото 1">
-  <img src="photo2.jpg" alt="Фото 2">
-  <img src="photo3.jpg" alt="Фото 3">
-  <img src="photo4.jpg" alt="Фото 4">
-  <img src="photo5.jpg" alt="Фото 5">
-  <img src="photo6.jpg" alt="Фото 6">
-  <img src="photo7.jpg" alt="Фото 7">
-  <img src="photo8.jpg" alt="Фото 8">
-  <img src="photo9.jpg" alt="Фото 9">
-  <img src="photo10.jpg" alt="Фото 10">
-  <img src="photo11.jpg" alt="Фото 11">
-  <img src="photo12.jpg" alt="Фото 12">
-  <img src="photo13.jpg" alt="Фото 13">
-  <img src="photo14.jpg" alt="Фото 14">
-  <img src="photo15.jpg" alt="Фото 15">
-  <img src="photo16.jpg" alt="Фото 16">
-  <img src="photo17.jpg" alt="Фото 17">
-  <img src="photo18.jpg" alt="Фото 18">
-  <img src="photo19.jpg" alt="Фото 19">
-  <img src="photo20.jpg" alt="Фото 20">
-  <img src="photo21.jpg" alt="Фото 21">
-  <img src="photo22.jpg" alt="Фото 22">
-  <img src="photo23.jpg" alt="Фото 23">
-  <img src="photo24.jpg" alt="Фото 24">
-  <img src="photo25.jpg" alt="Фото 25">
-  <img src="photo26.jpg" alt="Фото 26">
-  <img src="photo27.jpg" alt="Фото 27">
-  <img src="photo28.jpg" alt="Фото 28">
-  <img src="photo29.jpg" alt="Фото 29">
-  <img src="photo30.jpg" alt="Фото 30">
-  <img src="photo31.jpg" alt="Фото 31">
-  <img src="photo32.jpg" alt="Фото 32">
-</div>
+<main class="gallery">
+  <img src="b2.jpg" alt="Фото 1">
+  <img src="d3.jpg" alt="Фото 2">
+  <img src="g4.jpg" alt="Фото 3">
+  <img src="generated-content%20-%202025-10-11T003553.524.jpg" alt="Фото 4">
+  <img src="generated-content%20-%202025-10-11T003637.458.jpg" alt="Фото 5">
+  <img src="generated-content%20-%202025-10-11T003749.196.jpg" alt="Фото 6">
+  <img src="generated-content%20-%202025-10-11T003905.441.jpg" alt="Фото 7">
+  <img src="generated-content%20-%202025-10-11T004105.514.jpg" alt="Фото 8">
+  <img src="generated-content%20-%202025-10-11T004456.688.jpg" alt="Фото 9">
+  <img src="generated-content%20-%202025-10-11T004552.444.jpg" alt="Фото 10">
+  <img src="generated-content%20-%202025-10-12T182824.748.jpg" alt="Фото 11">
+  <img src="а1.jpg" alt="Фото 12">
+  <img src="загружено%20-%202025-10-11T005655.524.png" alt="Фото 13">
+  <img src="загружено%20-%202025-10-11T010356.391.png" alt="Фото 14">
+  <img src="загружено%20-%202025-10-11T010704.927.png" alt="Фото 15">
+  <img src="загружено%20-%202025-10-11T010850.567.png" alt="Фото 16">
+  <img src="загружено%20-%202025-10-11T010944.309.png" alt="Фото 17">
+  <img src="загружено%20-%202025-10-11T011015.407.png" alt="Фото 18">
+  <img src="загружено%20-%202025-10-11T011059.021.png" alt="Фото 19">
+  <img src="загружено%20-%202025-10-11T011141.257.png" alt="Фото 20">
+  <img src="загружено%20-%202025-10-11T011239.525.png" alt="Фото 21">
+  <img src="загружено%20-%202025-10-11T011317.636.png" alt="Фото 22">
+  <img src="загружено%20-%202025-10-11T011437.293.png" alt="Фото 23">
+  <img src="загружено%20-%202025-10-11T011523.471.png" alt="Фото 24">
+  <img src="загружено%20-%202025-10-11T011603.254.png" alt="Фото 25">
+  <img src="загружено%20-%202025-10-11T011629.454.png" alt="Фото 26">
+  <img src="загружено%20-%202025-10-11T011921.928.png" alt="Фото 27">
+  <img src="загружено%20-%202025-10-12T184319.449.png" alt="Фото 28">
+  <img src="загружено%20-%202025-10-12T184346.761.png" alt="Фото 29">
+  <img src="загружено%20-%202025-10-12T184419.593.png" alt="Фото 30">
+  <img src="загружено%20-%202025-10-12T184712.678.png" alt="Фото 31">
+  <img src="generated-content%20-%202025-10-12T182824.748.jpg" alt="Фото 32">
 </main>
 
-<footer>© Фотогалерея «Азиатская баня 1942» — все права сохранены.</footer>
-</div>
-
-<div id="adModal" role="dialog" aria-hidden="true">
-  <div class="modal-inner" role="document">
-    <button class="close" id="modalClose" aria-label="Закрыть">&times;</button>
-    <img id="modalImg" src="" style="max-width:100%; border-radius:8px;">
-  </div>
+<div id="adModal">
+  <span class="closeModal">&times;</span>
+  <img src="" alt="Увеличенное фото">
 </div>
 
 <script>
-// Модальное окно для увеличения фото
 const modal = document.getElementById('adModal');
-const modalImg = document.getElementById('modalImg');
+const modalImg = modal.querySelector('img');
 document.querySelectorAll('.gallery img').forEach(img=>{
-  img.addEventListener('click', e=>{
-    modalImg.src = e.target.src;
-    modal.style.display = 'flex';
+  img.addEventListener('click', ()=>{
+    modal.style.display='flex';
+    modalImg.src=img.src;
   });
 });
-document.getElementById('modalClose').addEventListener('click', ()=>{
-  modal.style.display = 'none';
-});
-
-// Кнопка рекламы (оставлена без изменений)
-document.getElementById('adOpenBtn').addEventListener('click', e=>{
-  e.preventDefault();
-  alert('Реклама открыта в новом окне');
+modal.querySelector('.closeModal').addEventListener('click', ()=>{
+  modal.style.display='none';
 });
 </script>
 
