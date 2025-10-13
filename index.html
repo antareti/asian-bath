@@ -1,172 +1,171 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Азиатская баня Ташкент 1942 — 2025 Фотогалерея</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Азиатская баня 1942 — Фотогалерея</title>
 <style>
-:root{--accent:#ffcc80;--accent-strong:#ff4500;--light:#ffeccf}
-*{box-sizing:border-box}
-body{margin:0;font-family:Georgia,serif;color:var(--light);background:url('k.png') center/cover no-repeat fixed}
-header.site-header{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 16px;color:var(--accent);text-shadow:0 0 12px rgba(255,200,120,.45);background:linear-gradient(180deg,rgba(0,0,0,.6),rgba(0,0,0,0));position:sticky;top:0;backdrop-filter:blur(6px);z-index:50}
-.site-title{font-size:1.2rem}
-.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center;padding:10px 16px;background:rgba(0,0,0,.35)}
-.toolbar select,.toolbar input[type=search],.toolbar button{appearance:none;border:1px solid rgba(255,200,120,.4);color:var(--light);background:rgba(0,0,0,.5);padding:10px 12px;border-radius:10px;box-shadow:0 10px 20px rgba(0,0,0,.45)}
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;max-width:1200px;margin:20px auto;padding:0 16px}
-.card{position:relative}
-.card img{width:100%;border-radius:12px;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.6);transition:transform .5s ease,box-shadow .5s ease}
-.card .share{position:absolute;left:10px;bottom:10px;display:flex;gap:8px;background:rgba(0,0,0,.45);padding:6px 8px;border-radius:10px}
-.share button{border:none;background:transparent;color:var(--accent);cursor:pointer}
-#adModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);align-items:center;justify-content:center;z-index:1000;opacity:0;transition:opacity .4s ease;flex-direction:column;padding:20px}
-#adModal.show{display:flex;opacity:1}
-.modal-inner{position:relative;max-width:min(1000px,94vw);width:100%}
-#adModal img{width:100%;max-height:70vh;object-fit:contain;border-radius:12px;background:#000}
-.closeModal{position:absolute;top:-12px;right:-12px;font-size:28px;color:#fff;cursor:pointer;background:#0008;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center}
-.modal-description{text-align:center;color:var(--accent);margin-top:10px}
-.modal-controls{display:flex;gap:10px;margin-top:10px}
-.modal-controls button{flex:1;padding:10px;border-radius:10px;border:1px solid rgba(255,200,120,.4);color:var(--light);background:rgba(0,0,0,.5)}
-section.block{max-width:1100px;margin:24px auto;padding:14px 16px;background:rgba(0,0,0,.4);border-radius:12px}
-.lang-switch{display:flex;gap:8px;align-items:center}
-.lang-switch button{padding:6px 10px;border-radius:8px;border:1px solid rgba(255,200,120,.35);background:rgba(0,0,0,.45);color:var(--light);cursor:pointer}
-@media(max-width:520px){.site-title{font-size:1rem}.modal-controls{flex-direction:column}}
-#loader{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.85);z-index:2000;transition:opacity .5s ease;opacity:1}
-#loader.hidden{opacity:0;pointer-events:none}
-.spinner{width:68px;height:68px;border:5px solid rgba(255,200,120,.25);border-top-color:var(--accent);border-radius:50%;animation:spin 1s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: linear-gradient(to bottom, #3e2723, #5d4037);
+    color: #fff;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Паровой туман */
+body::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: url('https://i.ibb.co/3hXq3Qp/steam.png') repeat;
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 0;
+    animation: steamMove 20s linear infinite;
+}
+
+/* Анимация движения пара */
+@keyframes steamMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 1000px 0; }
+}
+
+header {
+    text-align: center;
+    padding: 30px 20px;
+    background-color: rgba(50, 20, 10, 0.6);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    font-size: 1.8em;
+    letter-spacing: 1px;
+    backdrop-filter: blur(4px);
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.gallery img {
+    width: 100%;
+    cursor: pointer;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.7);
+    transition: transform 0.5s ease, box-shadow 0.5s ease, filter 0.5s ease;
+    filter: brightness(0.95);
+}
+.gallery img:hover {
+    transform: scale(1.06) rotate(1deg);
+    box-shadow: 0 10px 25px rgba(255,200,120,0.8);
+    filter: brightness(1.1);
+}
+
+/* Модальное окно */
+#modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    padding-top: 60px;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.95);
+    animation: fadeIn 0.5s;
+}
+#modal img {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(255,200,120,0.8);
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+#modal img.fade {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+#modal .close {
+    position: absolute;
+    top: 30px; right: 45px;
+    color: #ffcc80;
+    font-size: 45px;
+    font-weight: bold;
+    cursor: pointer;
+    text-shadow: 2px 2px 8px #000;
+}
+#caption {
+    text-align: center;
+    color: #ffe0b2;
+    padding: 10px 0;
+    font-style: italic;
+}
+
+/* Анимация модального окна */
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
 </style>
 </head>
 <body>
-<div id="loader" aria-live="polite"><div class="spinner" aria-label="Загрузка"></div></div>
-<header class="site-header">
-  <div class="site-title" data-i18n="title">Азиатская баня 1942–2025</div>
-  <div class="lang-switch" aria-label="Переключатель языков">
-    <span style="opacity:.8">🌐</span>
-    <button class="active" data-lang="ru" type="button">RU</button>
-    <button data-lang="en" type="button">EN</button>
-  </div>
-</header>
-<nav class="toolbar" aria-label="Фильтры и поиск">
-  <select id="categoryFilter" aria-label="Категория">
-    <option value="all" data-i18n="cat_all">Все</option>
-    <option value="hair" data-i18n="cat_hair">Волосы</option>
-    <option value="body" data-i18n="cat_body">Тело</option>
-    <option value="hands" data-i18n="cat_hands">Руки</option>
-    <option value="feet" data-i18n="cat_feet">Ноги</option>
-    <option value="hygiene" data-i18n="cat_hygiene">Гигиена</option>
-    <option value="steam" data-i18n="cat_steam">Парилка</option>
-  </select>
-  <input id="search" type="search" placeholder="Поиск по описанию..." aria-label="Поиск" />
-  <button id="clearFilters" type="button" data-i18n="clear">Сбросить</button>
-</nav>
-<main class="gallery" aria-live="polite"></main>
-<div id="adModal" role="dialog" aria-modal="true" aria-label="Просмотр фото">
-  <div class="modal-inner">
-    <span class="closeModal" aria-label="Закрыть">×</span>
-    <img alt="Увеличенное фото" />
-    <div class="modal-description"></div>
-    <div class="modal-controls">
-      <button id="prevBtn" type="button" data-i18n="prev">Назад</button>
-      <button id="nextBtn" type="button" data-i18n="next">Вперёд</button>
-    </div>
-  </div>
+<header>Азиатская баня 1942 — Фотогалерея</header>
+<div class="gallery">
+    <img src="b2.jpg" alt="Фото 1" onclick="openModal(this.src, 'Как правильно мыть голову')">
+    <img src="d3.jpg" alt="Фото 2" onclick="openModal(this.src, 'Как мыть спину')">
+    <img src="g4.jpg" alt="Фото 3" onclick="openModal(this.src, 'Как мыть ягодицы')">
+    <img src="generated-content-2025-10-11T003553.524.jpg" alt="Фото 4" onclick="openModal(this.src, 'Как ухаживать за интимной зоной')">
+    <img src="generated-content-2025-10-11T003637.458.jpg" alt="Фото 5" onclick="openModal(this.src, 'Как мыть ноги')">
+    <img src="generated-content-2025-10-11T003749.196.jpg" alt="Фото 6" onclick="openModal(this.src, 'Как мыть руки правильно')">
+    <img src="generated-content-2025-10-11T003905.441.jpg" alt="Фото 7" onclick="openModal(this.src, 'Как мыть уши')">
+    <img src="generated-content-2025-10-11T004105.514.jpg" alt="Фото 8" onclick="openModal(this.src, 'Как мыть шею')">
+    <img src="generated-content-2025-10-11T004456.688.jpg" alt="Фото 9" onclick="openModal(this.src, 'Как заботиться о коже')">
+    <img src="generated-content-2025-10-11T004552.444.jpg" alt="Фото 10" onclick="openModal(this.src, 'Как мыть лицо')">
+    <img src="generated-content-2025-10-11T004552.444.jpg" alt="Фото 11" onclick="openModal(this.src, 'Гигиена рук')">
+    <img src="generated-content-2025-10-12T182824.748.jpg" alt="Фото 12" onclick="openModal(this.src, 'Как правильно мыться в бане')">
+    <img src="а1.jpg" alt="Фото 13" onclick="openModal(this.src, 'Гигиена тела в бане')">
+    <img src="загружено-2025-10-11T005655.524.png" alt="Фото 14" onclick="openModal(this.src, 'Как мыть плечи')">
+    <img src="загружено-2025-10-11T010356.391.png" alt="Фото 15" onclick="openModal(this.src, 'Как мыть грудь')">
+    <img src="загружено-2025-10-11T010704.927.png" alt="Фото 16" onclick="openModal(this.src, 'Как мыть живот')">
+    <img src="загружено-2025-10-11T010850.567.png" alt="Фото 17" onclick="openModal(this.src, 'Как мыть бедра')">
+    <img src="загружено-2025-10-11T010944.309.png" alt="Фото 18" onclick="openModal(this.src, 'Как мыть колени')">
+    <img src="загружено-2025-10-11T011015.407.png" alt="Фото 19" onclick="openModal(this.src, 'Как мыть голени')">
+    <img src="загружено-2025-10-11T011059.021.png" alt="Фото 20" onclick="openModal(this.src, 'Как мыть ступни')">
+    <img src="загружено-2025-10-11T011141.257.png" alt="Фото 21" onclick="openModal(this.src, 'Как мыть пальцы ног')">
+    <img src="загружено-2025-10-11T011239.525.png" alt="Фото 22" onclick="openModal(this.src, 'Гигиена ногтей')">
 </div>
-<section id="history" class="block">
-  <h2 data-i18n="history_title">Краткая история бань Ташкента</h2>
-  <p data-i18n="history_text">Бани Ташкента имеют многовековую традицию: от купален махаллей до общественных бань XX века. Они служили местом очищения, общения и восстановления сил, объединяя ремёсла, ароматерапию и уважение к воде.</p>
-</section>
-<section id="tips" class="block">
-  <h2 data-i18n="tips_title">Советы по банной гигиене</h2>
-  <details class="faq"><summary data-i18n="tip1_q">Подготовка к бане</summary><p data-i18n="tip1_a">Пейте воду, не ешьте плотно за 1–2 часа и снимите украшения.</p></details>
-  <details class="faq"><summary data-i18n="tip2_q">Этика и безопасность</summary><p data-i18n="tip2_a">Используйте собственные полотенца, не перегревайтесь и делайте паузы на отдых.</p></details>
-  <details class="faq"><summary data-i18n="tip3_q">Гигиена после парилки</summary><p data-i18n="tip3_a">Ополоснитесь тёплой водой, увлажните кожу и восполните жидкость.</p></details>
-</section>
-<section id="contact" class="block">
-  <h2 data-i18n="contact_title">Обратная связь</h2>
-  <form id="contactForm" name="contact" aria-label="Форма обратной связи">
-    <input name="name" type="text" placeholder="Ваше имя" required data-i18n-placeholder="name_ph" />
-    <input name="email" type="email" placeholder="Email" required data-i18n-placeholder="email_ph" />
-    <select name="topic">
-      <option value="general" data-i18n="topic_general">Общее</option>
-      <option value="photo" data-i18n="topic_photo">Фото</option>
-      <option value="history" data-i18n="topic_history">История</option>
-    </select>
-    <textarea name="message" rows="4" placeholder="Сообщение" required data-i18n-placeholder="msg_ph"></textarea>
-    <button type="submit" data-i18n="send">Отправить</button>
-    <div id="contactStatus" role="status" aria-live="polite"></div>
-  </form>
-</section>
+
+<div id="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img id="modal-img">
+    <div id="caption"></div>
+</div>
+
 <script>
-function playOpenSound(){try{const C=new (window.AudioContext||window.webkitAudioContext)();const t=C.currentTime;[1174.66,1480,1864.66].forEach((f,i)=>{const o=C.createOscillator(),g=C.createGain();o.type='sine';o.frequency.setValueAtTime(f,t);g.gain.setValueAtTime(0.15/(i+1),t);g.gain.exponentialRampToValueAtTime(0.01,t+0.8+i*0.2);o.connect(g);g.connect(C.destination);o.start(t+i*0.05);o.stop(t+1.5)})}catch(e){}}
-const photos=[
-  {img:'b2.jpg',desc:'Как правильно мыть голову',cat:'hair'},
-  {img:'d3.jpg',desc:'Как мыть спину',cat:'body'},
-  {img:'g4.jpg',desc:'Как мыть ягодицы',cat:'body'},
-  {img:'generated-content-2025-10-11T003553.524.jpg',desc:'Как ухаживать за интимной зоной',cat:'hygiene'},
-  {img:'generated-content-2025-10-11T003637.458.jpg',desc:'Как мыть ноги',cat:'feet'},
-  {img:'generated-content-2025-10-11T003749.196.jpg',desc:'Как мыть руки правильно',cat:'hands'},
-  {img:'generated-content-2025-10-11T003905.441.jpg',desc:'Как мыть уши',cat:'hygiene'},
-  {img:'generated-content-2025-10-11T004105.514.jpg',desc:'Как мыть шею',cat:'body'},
-  {img:'generated-content-2025-10-11T004456.688.jpg',desc:'Как заботиться о коже',cat:'hygiene'},
-  {img:'generated-content-2025-10-11T004552.444.jpg',desc:'Как мыть лицо',cat:'hygiene'},
-  {img:'generated-content-2025-10-11T004552.444.jpg',desc:'Гигиена рук',cat:'hands'},
-  {img:'generated-content-2025-10-12T182824.748.jpg',desc:'Как правильно мыться в бане',cat:'steam'},
-  {img:'а1.jpg',desc:'Гигиена тела в бане',cat:'hygiene'},
-  {img:'загружено-2025-10-11T005655.524.png',desc:'Как мыть плечи',cat:'body'},
-  {img:'загружено-2025-10-11T010356.391.png',desc:'Как мыть грудь',cat:'body'},
-  {img:'загружено-2025-10-11T010704.927.png',desc:'Как мыть живот',cat:'body'},
-  {img:'загружено-2025-10-11T010850.567.png',desc:'Как мыть бедра',cat:'body'},
-  {img:'загружено-2025-10-11T010944.309.png',desc:'Как мыть колени',cat:'body'},
-  {img:'загружено-2025-10-11T011015.407.png',desc:'Как мыть голени',cat:'body'},
-  {img:'загружено-2025-10-11T011059.021.png',desc:'Как мыть ступни',cat:'feet'},
-  {img:'загружено-2025-10-11T011141.257.png',desc:'Как мыть пальцы ног',cat:'feet'},
-  {img:'загружено-2025-10-11T011239.525.png',desc:'Гигиена ногтей',cat:'hygiene'},
-  {img:'загружено-2025-10-11T011317.636.png',desc:'Как мыть локти',cat:'hands'},
-  {img:'загружено-2025-10-11T011437.293.png',desc:'Как мыть предплечья',cat:'hands'},
-  {img:'загружено-2025-10-11T011523.471.png',desc:'Как мыть запястья',cat:'hands'},
-  {img:'загружено-2025-10-11T011603.254.png',desc:'Как мыть пальцы рук',cat:'hands'},
-  {img:'загружено-2025-10-11T011629.454.png',desc:'Гигиена между пальцами',cat:'hands'},
-  {img:'загружено-2025-10-11T011921.928.png',desc:'Как мыть подмышки',cat:'body'},
-  {img:'загружено-2025-10-12T184319.449.png',desc:'Гигиена паховой области',cat:'hygiene'},
-  {img:'загружено-2025-10-12T184346.761.png',desc:'Как мыть поясницу',cat:'body'},
-  {img:'загружено-2025-10-12T184419.593.png',desc:'Как правильно париться',cat:'steam'},
-  {img:'загружено-2025-10-12T184712.678.png',desc:'Общая гигиена в бане',cat:'hygiene'},
-  {img:'generated-content-2025-10-12T182824.748.jpg',desc:'Правила банной гигиены',cat:'hygiene'}
-];
-const gallery=document.querySelector('.gallery');
-let currentIndex=0;
-function render(items){
-  gallery.innerHTML='';
-  items.forEach((p,idx)=>{
-    const card=document.createElement('div');
-    card.className='card';
-    const img=document.createElement('img');
-    img.src=p.img;
-    img.alt=`Фото ${idx+1}`;
-    img.dataset.description=p.desc;
-    img.dataset.cat=p.cat;
-    img.addEventListener('click',()=>openModal(idx, items));
-    card.appendChild(img);
-    const share=document.createElement('div');
-    share.className='share';
-    ['VK','TG','FB'].forEach(n=>{
-      const b=document.createElement('button');
-      b.type='button';
-      b.textContent=n;
-      b.addEventListener('click',(e)=>{
-        e.stopPropagation();
-        const url=location.href;
-        const text=p.desc;
-        if(navigator.share){navigator.share({title:document.title,text,url}).catch(()=>{});} else {prompt('Скопируйте ссылку',url)}
-      });
-      share.appendChild(b)
-    });
-    card.appendChild(share);
-    gallery.appendChild(card)
-  });
+function openModal(src, caption) {
+    document.getElementById('modal').style.display = 'block';
+    document.getElementById('modal-img').src = src;
+    document.getElementById('caption').innerHTML = caption;
 }
-render(photos);
-const catSel=document.getElementById('categoryFilter');
-const searchInput=document.getElementById('search');
-const clearBtn=document.getElementById('clearFilters');
-function applyFilters(){
-  const q=(searchInput.value||'').toLowerCase();
+
+function closeModal() {
+    document.getElementById('modal').style.display = 'none';
+}
+
+// Закрытие модального окна при нажатии на ESC
+window.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+});
+
+// Закрытие модального окна при клике вне изображения
+document.getElementById('modal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+});
+</script>
+</body>
+</html>
