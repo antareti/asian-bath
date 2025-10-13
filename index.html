@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
   <title>Азиатская баня Ташкент 1942 — 2025 Фотогалерея</title>
   <style>
     :root {
@@ -155,10 +155,37 @@
   <main class="gallery"></main>
   <div id="adModal">
     <span class="closeModal">×</span>
-    <img alt="Увеличенное фото" />
+    <img alt="Увеличенное фото"/>
     <div class="modal-description"></div>
   </div>
   <script>
+    // Функция для создания красивого звука при открытии фото
+    function playOpenSound() {
+      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      const now = audioContext.currentTime;
+      
+      // Создаем красивый звук колокольчика / звон воды
+      const frequencies = [1174.66, 1480, 1864.66]; // Гармоничные частоты
+      
+      frequencies.forEach((freq, index) => {
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        
+        oscillator.type = 'sine';
+        oscillator.frequency.setValueAtTime(freq, now);
+        
+        // Плавное затухание для мягкого звука
+        gainNode.gain.setValueAtTime(0.15 / (index + 1), now);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.8 + index * 0.2);
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        
+        oscillator.start(now + index * 0.05);
+        oscillator.stop(now + 1.5);
+      });
+    }
+
     const photos = [
       { img: 'b2.jpg', desc: 'Как правильно мыть голову' },
       { img: 'd3.jpg', desc: 'Как мыть спину' },
@@ -207,6 +234,9 @@
     const modalDesc = modal.querySelector('.modal-description');
     gallery.addEventListener('click', (e) => {
       if (e.target.tagName === 'IMG') {
+        // Воспроизводим звук при открытии фото
+        playOpenSound();
+        
         modalImg.src = e.target.src;
         modalDesc.textContent = e.target.dataset.description;
         modal.style.display = 'flex';
