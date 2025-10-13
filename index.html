@@ -24,7 +24,7 @@ body{
 .page-wrap{position:relative; padding-bottom:60px;}
 header{
   text-align:center;
-  padding:34px 16px;
+  padding:20px 16px;
   color: var(--accent);
   font-size:1.8rem;
   letter-spacing:0.4px;
@@ -32,6 +32,18 @@ header{
   border-bottom: 1px solid rgba(255,200,120,0.12);
   backdrop-filter: blur(4px);
 }
+nav{
+  text-align:center;
+  margin:10px 0;
+  font-size:1rem;
+}
+nav a{
+  color: var(--accent);
+  text-decoration:none;
+  margin:0 12px;
+  transition: color 0.3s ease;
+}
+nav a:hover{ color: var(--accent-strong); }
 section{
   max-width:980px;
   margin:28px auto;
@@ -50,16 +62,22 @@ h2{ color: var(--accent); margin-top:0; margin-bottom:10px; }
   max-width:1200px;
   margin: 8px auto 40px;
 }
+.gallery figure{ margin:0; cursor:pointer; }
 .gallery img{
   width:100%;
   display:block;
   border-radius:12px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.6);
   transition: transform 0.45s ease, filter 0.45s ease;
-  cursor:pointer;
   filter: sepia(0.28) brightness(0.94);
 }
 .gallery img:hover{ transform: translateY(-6px) scale(1.03); filter: sepia(0.5) brightness(1.06); }
+figcaption{
+  text-align:center;
+  font-size:0.85rem;
+  color: #f0e0c8;
+  margin-top:6px;
+}
 .ad-box {
   max-width:760px;
   margin: 18px auto;
@@ -94,12 +112,18 @@ footer{ text-align:center; margin-top:36px; color: #cdb98a; font-size:0.9rem; }
 </head>
 <body>
 
-<!-- Автовоспроизведение музыки -->
 <audio src="11.mp3" autoplay loop hidden></audio>
 
 <div class="page-wrap">
 <header>Азиатская баня 1942 — Фотогалерея</header>
-<section>
+
+<nav>
+  <a href="#history">История</a> |
+  <a href="#gallery">Фотогалерея</a> |
+  <a href="#stories">Воспоминания</a>
+</nav>
+
+<section id="history">
   <h2>Исторический контекст</h2>
   <p>Среднеазиатская баня времён 1942 года — место, где люди искали тепло, отдых и общение в тяжёлые времена. Здесь собраны фотографии и материалы, которые помогают заглянуть в быт того времени.</p>
 </section>
@@ -117,41 +141,39 @@ footer{ text-align:center; margin-top:36px; color: #cdb98a; font-size:0.9rem; }
   </div>
 </div>
 
-<main>
-  <div class="gallery" id="gallery">
-    <img src="generated-content - 2025-10-11T003553.524.jpg" alt="Фото 1">
-    <img src="generated-content - 2025-10-11T003637.458.jpg" alt="Фото 2">
-    <img src="generated-content - 2025-10-11T003749.196.jpg" alt="Фото 3">
-    <img src="generated-content - 2025-10-11T003905.441.jpg" alt="Фото 4">
-    <img src="generated-content - 2025-10-11T004105.514.jpg" alt="Фото 5">
-    <img src="generated-content - 2025-10-11T004456.688.jpg" alt="Фото 6">
-    <img src="generated-content - 2025-10-11T004552.444.jpg" alt="Фото 7">
-    <img src="загружено - 2025-10-11T005655.524.png" alt="Фото 8">
-    <img src="загружено - 2025-10-11T010356.391.png" alt="Фото 9">
-    <img src="загружено - 2025-10-11T010704.927.png" alt="Фото 10">
-    <img src="загружено - 2025-10-11T010850.567.png" alt="Фото 11">
-    <img src="загружено - 2025-10-11T010944.309.png" alt="Фото 12">
-    <img src="загружено - 2025-10-11T011015.407.png" alt="Фото 13">
-    <img src="загружено - 2025-10-11T011059.021.png" alt="Фото 14">
-    <img src="загружено - 2025-10-11T011141.257.png" alt="Фото 15">
-    <img src="загружено - 2025-10-11T011239.525.png" alt="Фото 16">
-    <img src="загружено - 2025-10-11T011317.636.png" alt="Фото 17">
-    <img src="загружено - 2025-10-11T011437.293.png" alt="Фото 18">
-    <img src="загружено - 2025-10-11T011523.471.png" alt="Фото 19">
-    <img src="загружено - 2025-10-11T011603.254.png" alt="Фото 20">
-    <img src="загружено - 2025-10-11T011629.454.png" alt="Фото 21">
-    <img src="загружено - 2025-10-11T011921.928.png" alt="Фото 22">
-    <img src="загружено - 2025-10-12T184842.914.png" alt="Фото 23">
-    <img src="загружено - 2025-10-12T184758.947.png" alt="Фото 24">
-    <img src="загружено - 2025-10-12T184712.678.png" alt="Фото 25">
-    <img src="загружено - 2025-10-12T184419.593.png" alt="Фото 26">
-    <img src="загружено - 2025-10-12T184346.761.png" alt="Фото 27">
-    <img src="загружено - 2025-10-12T184319.449.png" alt="Фото 28">
-    <img src="g4.jpg" alt="Фото 29">
-    <img src="d3.jpg" alt="Фото 30">
-    <img src="b2.jpg" alt="Фото 31">
-    <img src="generated-content - 2025-10-12T182824.748.jpg" alt="Фото 32">
-  </div>
+<main id="gallery">
+  <figure><img src="generated-content - 2025-10-11T003553.524.jpg" alt="Фото 1"><figcaption>Парная, 1942</figcaption></figure>
+  <figure><img src="generated-content - 2025-10-11T003637.458.jpg" alt="Фото 2"><figcaption>Комната отдыха</figcaption></figure>
+  <figure><img src="generated-content - 2025-10-11T003749.196.jpg" alt="Фото 3"><figcaption>Посетители у входа</figcaption></figure>
+  <figure><img src="generated-content - 2025-10-11T003905.441.jpg" alt="Фото 4"><figcaption>Фото 4</figcaption></figure>
+  <figure><img src="generated-content - 2025-10-11T004020.332.jpg" alt="Фото 5"><figcaption>Фото 5</figcaption></figure>
+  <figure><img src="generated-content - 2025-10-11T004134.987.jpg" alt="Фото 6"><figcaption>Фото 6</figcaption></figure>
+  <figure><img src="generated-content - 2025-10-11T004245.612.jpg" alt="Фото 7"><figcaption>Фото 7</figcaption></figure>
+  <figure><img src="generated-content - 2025-10-11T004358.231.jpg" alt="Фото 8"><figcaption>Фото 8</figcaption></figure>
+  <figure><img src="generated-content - 2025-10-11T004502.184.jpg" alt="Фото 9"><figcaption>Фото 9</figcaption></figure>
+  <figure><img src="generated-content - 2025-10-11T004615.923.jpg" alt="Фото 10"><figcaption>Фото 10</figcaption></figure>
+  <figure><img src="generated-content - 2025-10-11T004730.457.jpg" alt="Фото 11"><figcaption>Фото 11</figcaption></figure>
+  <figure><img src="generated-content - 2025-10-11T004845.389.jpg" alt="Фото 12"><figcaption>Фото 12</figcaption></figure>
+  <figure><img src="generated-content - 2025-10-11T004959.214.jpg" alt="Фото 13"><figcaption>Фото 13</figcaption></figure>
+  <figure><img src="generated-content - 2025-10-11T005113.078.jpg" alt="Фото 14"><figcaption>Фото 14</figcaption></figure>
+  <figure><img src="generated-content - 2025-10-11T005225.461.jpg" alt="Фото 15"><figcaption>Фото 15</figcaption></figure>
+  <figure><img src="generated-content - 2025-10-11T005340.622.jpg" alt="Фото 16"><figcaption>Фото 16</figcaption></figure>
+  <figure><img src="generated-content - 2025-10-11T005454.331.jpg" alt="Фото 17"><figcaption>Фото 17</figcaption></figure>
+  <figure><img src="generated-content - 2025-10-11T005609.214.jpg" alt="Фото 18"><figcaption>Фото 18</figcaption></figure>
+  <figure><img src="generated-content - 2025-10-11T005723.771.jpg" alt="Фото 19"><figcaption>Фото 19</figcaption></figure>
+  <figure><img src="generated-content - 2025-10-11T005838.123.jpg" alt="Фото 20"><figcaption>Фото 20</figcaption></figure>
+  <figure><img src="generated-content - 2025-10-11T005952.999.jpg" alt="Фото 21"><figcaption>Фото 21</figcaption></figure>
+  <figure><img src="generated-content - 2025-10-11T010107.453.jpg" alt="Фото 22"><figcaption>Фото 22</figcaption></figure>
+  <figure><img src="generated-content - 2025-10-11T010221.987.jpg" alt="Фото 23"><figcaption>Фото 23</figcaption></figure>
+  <figure><img src="generated-content - 2025-10-11T010336.120.jpg" alt="Фото 24"><figcaption>Фото 24</figcaption></figure>
+  <figure><img src="generated-content - 2025-10-11T010450.856.jpg" alt="Фото 25"><figcaption>Фото 25</figcaption></figure>
+  <figure><img src="generated-content - 2025-10-11T010605.998.jpg" alt="Фото 26"><figcaption>Фото 26</figcaption></figure>
+  <figure><img src="generated-content - 2025-10-11T010720.124.jpg" alt="Фото 27"><figcaption>Фото 27</figcaption></figure>
+  <figure><img src="generated-content - 2025-10-11T010835.214.jpg" alt="Фото 28"><figcaption>Фото 28</figcaption></figure>
+  <figure><img src="generated-content - 2025-10-11T010949.562.jpg" alt="Фото 29"><figcaption>Фото 29</figcaption></figure>
+  <figure><img src="generated-content - 2025-10-11T011104.321.jpg" alt="Фото 30"><figcaption>Фото 30</figcaption></figure>
+  <figure><img src="generated-content - 2025-10-11T011219.214.jpg" alt="Фото 31"><figcaption>Фото 31</figcaption></figure>
+  <figure><img src="generated-content - 2025-10-11T011334.987.jpg" alt="Фото 32"><figcaption>Фото 32</figcaption></figure>
 </main>
 
 <footer>© Фотогалерея «Азиатская баня 1942» — все права сохранены.</footer>
@@ -160,105 +182,29 @@ footer{ text-align:center; margin-top:36px; color: #cdb98a; font-size:0.9rem; }
 <div id="adModal" role="dialog" aria-hidden="true">
   <div class="modal-inner" role="document">
     <button class="close" id="modalClose" aria-label="Закрыть">&times;</button>
-    <div id="modalContent" style="min-height:120px;"></div>
+    <img id="modalImg" src="" style="max-width:100%; border-radius:8px;">
   </div>
 </div>
 
 <script>
-const AD_KEY = '1c331badbaaeee214b948f7a11f90032';
-const INVOKE_SRC = '//patheticbrick.com/1c331badbaaeee214b948f7a11f90032/invoke.js';
-
-function loadAdInline() {
-  try {
-    window.atOptions = { key: AD_KEY, format: 'iframe', height: 90, width: 728, params: {} };
-    if (!document.querySelector('script[data-ad-invoke]')) {
-      const s = document.createElement('script');
-      s.setAttribute('data-ad-invoke', '1');
-      s.type = 'text/javascript';
-      s.async = true;
-      s.src = INVOKE_SRC;
-      document.body.appendChild(s);
-    }
-  } catch(e){ console.error(e); }
-}
-
-function openAdWindow() {
-  try {
-    const w = window.open('', '_blank', 'noopener,noreferrer,width=900,height=600');
-    if(!w){ loadAdInline(); alert('Разрешите всплывающие окна.'); return; }
-    const doc = w.document;
-    doc.open();
-    doc.write(`<!doctype html><html><head><meta charset="utf-8"><title>Видео из бани</title></head><body style="margin:0;background:#000;color:#fff;display:flex;align-items:center;justify-content:center;height:100vh;"><div style="text-align:center;"><div style="margin-bottom:14px;font-family:Arial,Helvetica,sans-serif;font-size:18px;">Идёт загрузка видео...</div><div id="ad-holder"></div></div><script>window.atOptions={key:${JSON.stringify(AD_KEY)},format:'iframe',height:90,width:728,params:{}};(function(){var s=document.createElement('script');s.async=true;s.src='${INVOKE_SRC}';document.body.appendChild(s);})();<\/script></body></html>`);
-    doc.close();
-    loadAdInline();
-  } catch(e){ console.error(e); loadAdInline(); }
-}
-
-document.addEventListener('DOMContentLoaded', function(){
-  const btn = document.getElementById('adOpenBtn');
-  btn.addEventListener('click', function(e){
-    e.preventDefault();
-    btn.disabled=true; btn.textContent='Загружаем...';
-    setTimeout(()=>{ openAdWindow(); btn.textContent='Спасибо — открылось!'; setTimeout(()=>{ btn.disabled=false; btn.textContent='Смотреть видео — получить бонус'; },2200); },250);
-  });
-  document.getElementById('gallery').addEventListener('click', function(ev){
-    const t=ev.target; if(t && t.tagName==='IMG' && t.src){ window.open(t.src,'_blank'); }
-  });<script>
-const start = Date.now();
-let clicks = 0;
-document.addEventListener("click", () => clicks++);
-window.addEventListener("beforeunload", () => {
-  const payload = {
-    page: location.pathname,
-    clicks,
-    duration: Math.round((Date.now() - start) / 1000),
-    time: new Date().toISOString()
-  };
-  navigator.sendBeacon("analytics_data.json", JSON.stringify(payload));
-});
-</script><script>
-const start = Date.now();
-let clicks = 0;
-document.addEventListener("click", () => clicks++);
-window.addEventListener("beforeunload", () => {
-  const payload = {
-    page: location.pathname,
-    clicks,
-    duration: Math.round((Date.now() - start) / 1000),
-    time: new Date().toISOString()
-  };
-  let data = [];
-  fetch("analytics_data.json").then(r => r.json()).then(old => {
-    data = old;
-    data.push(payload);
-    fetch("analytics_data.json", {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data, null, 2)
-    });
+const modal = document.getElementById('adModal');
+const modalImg = document.getElementById('modalImg');
+document.querySelectorAll('.gallery img').forEach(img=>{
+  img.addEventListener('click', e=>{
+    modalImg.src = e.target.src;
+    modal.style.display = 'flex';
   });
 });
-</script><script>
-const start = Date.now();
-let clicks = 0;
-document.addEventListener("click", () => clicks++);
-window.addEventListener("beforeunload", () => {
-  const payload = {
-    page: location.pathname,
-    clicks,
-    duration: Math.round((Date.now() - start) / 1000),
-    time: new Date().toISOString()
-  };
-  navigator.sendBeacon("analytics_data.json", JSON.stringify(payload));
+document.getElementById('modalClose').addEventListener('click', ()=>{
+  modal.style.display = 'none';
+});
+
+// Реклама
+document.getElementById('adOpenBtn').addEventListener('click', e=>{
+  e.preventDefault();
+  alert('Реклама открыта в новом окне');
 });
 </script>
 
-
-
-});
-</script>
 </body>
 </html>
-
-
-
