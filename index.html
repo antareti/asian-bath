@@ -16,13 +16,32 @@
       color: var(--light);
       background: url('k.png') center center / cover no-repeat fixed;
     }
-    header { text-align:center; padding:34px 16px; color: var(--accent); font-size:1.8rem; text-shadow:0 0 12px rgba(255,200,120,0.45);}
+    header.site-header {
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+      padding:24px 16px 10px;
+      color: var(--accent);
+      text-shadow:0 0 12px rgba(255,200,120,0.45);
+    }
+    .site-header .logo {
+      max-width:80px;
+      height:auto;
+      display:block;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+    }
+    .site-title {
+      font-size:1.6rem;
+      line-height:1.25;
+      text-align:left;
+    }
     .gallery {
       display:grid;
       grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
       gap:22px;
       max-width:1200px;
-      margin:28px auto;
+      margin:20px auto;
       padding:0 16px;
     }
     .gallery img {
@@ -45,10 +64,7 @@
       transition: opacity 0.4s ease;
       flex-direction: column;
     }
-    #adModal.show {
-      display:flex;
-      opacity:1;
-    }
+    #adModal.show { display:flex; opacity:1; }
     #adModal img {
       max-width:90%;
       max-height:70%;
@@ -57,45 +73,30 @@
       opacity:0;
       transition: transform 0.4s ease, opacity 0.4s ease;
     }
-    #adModal.show img {
-      transform: scale(1);
-      opacity:1;
-    }
+    #adModal.show img { transform: scale(1); opacity:1; }
     .closeModal {
-      position:absolute;
-      top:20px;
-      right:30px;
-      font-size:32px;
-      color:#fff;
-      cursor:pointer;
+      position:absolute; top:20px; right:30px; font-size:32px; color:#fff; cursor:pointer;
     }
     .modal-description {
-      margin-top: 20px;
-      text-align: center;
-      color: var(--accent);
-      font-size: 1.3rem;
-      max-width: 90%;
-      padding: 10px 20px;
-      background: rgba(0,0,0,0.5);
-      border-radius: 8px;
-      opacity:0;
-      transform: translateY(20px);
-      transition: opacity 0.4s ease 0.2s, transform 0.4s ease 0.2s;
+      margin-top: 20px; text-align: center; color: var(--accent); font-size: 1.3rem; max-width: 90%; padding: 10px 20px; background: rgba(0,0,0,0.5); border-radius: 8px; opacity:0; transform: translateY(20px); transition: opacity 0.4s ease 0.2s, transform 0.4s ease 0.2s;
     }
-    #adModal.show .modal-description {
-      opacity:1;
-      transform: translateY(0);
-    }
+    #adModal.show .modal-description { opacity:1; transform: translateY(0); }
   </style>
 </head>
 <body>
-  <header>Азиатская баня 1942 — Фотогалерея</header>
+  <header class="site-header">
+    <img class="logo" src="logo-woman-sponge.png" alt="Логотип: женщина с мачалкой — гигиена" />
+    <div class="site-title">Азиатская баня 1942–2025 — Институт гинекологии</div>
+  </header>
+
   <main class="gallery"></main>
+
   <div id="adModal">
     <span class="closeModal">×</span>
-    <img alt="Увеличенное фото" />
+    <img alt="Увеличенное фото"/>
     <div class="modal-description"></div>
   </div>
+
   <script>
     const photos = [
       { img: 'b2.jpg', desc: 'Как правильно мыть голову' },
@@ -153,7 +154,7 @@
     });
     modal.querySelector('.closeModal').addEventListener('click', () => {
       modal.classList.remove('show');
-      setTimeout(() => modal.style.display = 'none', 400);
+      setTimeout(() => (modal.style.display = 'none'), 400);
     });
   </script>
 </body>
